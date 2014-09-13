@@ -2,6 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre8"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/core.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/core.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Program%20Files/processing-2.2.1/build/javadoc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

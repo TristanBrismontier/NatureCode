@@ -2,15 +2,16 @@ import processing.core.*;
 
 public class WalkTest extends PApplet {
 
+	WhiteWalker w;
+	
 	public void setup() {
-	    size(200,200);
-	    background(0);
-	  }
+	    size(1000,300);
+	    background(255);
+	    w = new WhiteWalker(this);
+	}
 
 	  public void draw() {
-	    stroke(255);
-	    if (mousePressed) {
-	      line(mouseX,mouseY,pmouseX,pmouseY);
-	    }
+	   w.walk();
+	   w.display();
 	  } 
 }
