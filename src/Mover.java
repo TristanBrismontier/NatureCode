@@ -12,7 +12,7 @@ public class Mover {
 
 	public Mover(PApplet p, float m) {
 		this.p = p;
-		location = new PVector(p.random(p.width), p.random(p.height));
+		location = new PVector(p.random(p.width), p.random(p.height),p.random(p.height));
 		velocity = new PVector(0, 0);
 		acceleration = new PVector(0, 0);
 		this.mass = m;
@@ -26,10 +26,14 @@ public class Mover {
 	}
 
 	void display() {
-		p.stroke(0);
+//		p.stroke(0);
+		p.noStroke();
 
-		p.fill(0, 0, 0, 125);
-		p.ellipse(location.x, location.y, mass * 5, mass * 5);
+		p.fill(255, 255, 255);
+		p.pushMatrix();
+		p.translate(location.x,	location.y,location.z);
+		p.sphere(mass*5);
+		p.popMatrix();
 	}
 
 	void applyForce(PVector force) {
@@ -67,6 +71,16 @@ public class Mover {
 		} else if (location.y <=  mass * 5/2) {
 			location.y =  mass * 5/2;
 			velocity.y *= -1;
+			velocity.mult((float)0.4);
+		}
+		
+		if (location.z >= p.height -  mass * 5/2) {
+			location.z = p.height -  mass * 5/2;
+			velocity.z *= -1;
+			velocity.mult((float)0.4);
+		} else if (location.z <=  mass * 5/2) {
+			location.z =  mass * 5/2;
+			velocity.z *= -1;
 			velocity.mult((float)0.4);
 		}
 	}
