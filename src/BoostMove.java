@@ -8,7 +8,7 @@ public class BoostMove extends Mover{
 	float maxDef;
 	
 	public BoostMove(PApplet p, float mass) {
-		super(p,mass);
+		super(p,mass,false);
 		this.mass = mass;
 		xDef = 1;
 		yDef = 1;

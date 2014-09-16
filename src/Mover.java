@@ -9,14 +9,19 @@ public class Mover {
 	PVector acceleration;
 	float mass;
 	final float G;
+	final float absCine;
 
-	public Mover(PApplet p, float m) {
+	boolean d3;
+
+	public Mover(PApplet p, float m, boolean d3) {
 		this.p = p;
-		location = new PVector(p.random(p.width), p.random(p.height),p.random(p.height));
+		this.d3 = d3;
+		location =(d3)? new PVector(p.random(p.width), p.random(p.height),p.random(p.height)):new PVector(p.random(p.width), p.random(p.height));
 		velocity = new PVector(0, 0);
 		acceleration = new PVector(0, 0);
 		this.mass = m;
 		G = (float) 0.4;
+		absCine = (float)0.4;
 	}
 
 	void update() {
@@ -25,7 +30,16 @@ public class Mover {
 		acceleration.mult(0);
 	}
 
-	void display() {
+	void display(){
+	if(d3){
+		display3D();
+	}else{
+		display2D();
+	}
+	
+	}
+	
+	void display3D() {
 //		p.stroke(0);
 		p.noStroke();
 
@@ -34,6 +48,12 @@ public class Mover {
 		p.translate(location.x,	location.y,location.z);
 		p.sphere(mass*5);
 		p.popMatrix();
+	}
+	
+	void display2D(){
+		p.stroke(0);
+		p.fill(0, 0, 0, 125);
+		p.ellipse(location.x, location.y, mass*5, mass*5);
 	}
 
 	void applyForce(PVector force) {
@@ -54,34 +74,34 @@ public class Mover {
 
 	void checkEdge() {
 
-		if (location.x >= p.width -  mass * 5/2) {
+		if (location.x > p.width -  mass * 5/2) {
 			location.x = p.width -  mass * 5/2;
 			velocity.x *= -1;
-			velocity.mult((float)0.4);
+			velocity.mult(absCine);
 		} else if (location.x <  mass * 5/2) {
 			location.x =  mass * 5/2;
 			velocity.x *= -1;
-			velocity.mult((float)0.4);
+			velocity.mult(absCine);
 		}
 
-		if (location.y >= p.height -  mass * 5/2) {
+		if (location.y > p.height -  mass * 5/2) {
 			location.y = p.height -  mass * 5/2;
 			velocity.y *= -1;
-			velocity.mult((float)0.4);
-		} else if (location.y <=  mass * 5/2) {
+			velocity.mult(absCine);
+		} else if (location.y <  mass * 5/2) {
 			location.y =  mass * 5/2;
 			velocity.y *= -1;
-			velocity.mult((float)0.4);
+			velocity.mult(absCine);
 		}
 		
-		if (location.z >= p.height -  mass * 5/2) {
+		if (location.z > p.height -  mass * 5/2) {
 			location.z = p.height -  mass * 5/2;
 			velocity.z *= -1;
-			velocity.mult((float)0.4);
-		} else if (location.z <=  mass * 5/2) {
+			velocity.mult(absCine);
+		} else if (location.z <  mass * 5/2) {
 			location.z =  mass * 5/2;
 			velocity.z *= -1;
-			velocity.mult((float)0.4);
+			velocity.mult(absCine);
 		}
 	}
 }
