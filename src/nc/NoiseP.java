@@ -1,3 +1,4 @@
+package nc;
 import processing.core.PApplet;
 
 public class NoiseP extends PApplet {

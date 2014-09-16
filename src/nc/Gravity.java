@@ -1,3 +1,4 @@
+package nc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,14 +12,16 @@ public class Gravity extends PApplet {
 	List<Mover> bmE = new ArrayList<Mover>();
 	float rX;
 	float rY;
-
+	float side;
+	
 	public void setup() {
+		side = 800;
 		size(800, 800,OPENGL);
 		background(255);
 		for (int i = 0; i < 25; i++) {
 			bmE.add(new Mover(this, random(1, 8),true));
 		}
-		bmE.add(new Mover(this, 25,true));
+		bmE.add(new Mover(this, 50,true,new PVector(side/2,side/2,side/2)));
 		
 	}
 
@@ -48,13 +51,15 @@ public class Gravity extends PApplet {
 		
 		
 		
-		
+
 		for (Mover bm : bmE) {
 			for (Mover bmA : bmE) {
 				bm.applyForce(bmA.attract(bm));
 			}
-			bm.update();
-			bm.checkEdge();
+			if(bm.mass <25){
+				bm.update();
+//				bm.checkEdge();
+			}
 			bm.display();
 		}
 		translate(150, 0, -height*(float)1.75);

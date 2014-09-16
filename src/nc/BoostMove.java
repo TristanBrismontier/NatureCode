@@ -1,3 +1,4 @@
+package nc;
 import processing.core.*;
 
 public class BoostMove extends Mover{
@@ -16,6 +17,7 @@ public class BoostMove extends Mover{
 	}
 	
 	@Override
+	public
 	void update(){
 		velocity.add(acceleration);
 		location.add(velocity);
@@ -23,6 +25,7 @@ public class BoostMove extends Mover{
 	}
 	
 	@Override
+	public
 	void display(){
 		p.stroke(0);
 		float contraint = p.map(Math.min(xDef, yDef), 1, maxDef, 0, 255);
@@ -30,7 +33,7 @@ public class BoostMove extends Mover{
 		p.ellipse(location.x, location.y, mass*xDef, mass*yDef);
 	}
 	
-void checkEdge(){
+public void checkEdge(){
 		
 		checkNearContact();
 		
@@ -82,6 +85,7 @@ void checkEdge(){
 	}
 
 	@Override
+	public
 	void applyForce(PVector force){
 		PVector f = PVector.div(force, mass);
 		acceleration.add(f);

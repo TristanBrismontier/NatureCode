@@ -1,3 +1,4 @@
+package nc;
 import processing.core.*;
 
 public class Attractor {
