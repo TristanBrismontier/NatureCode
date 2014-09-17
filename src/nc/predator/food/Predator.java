@@ -11,6 +11,8 @@ public class Predator extends Mover {
 	}
 
 	public void interac(Mover other) {
+		//interact devrais définir un vector vitess plustôt qu'une accélération
+		// ou bien définir une accélération non limité par le mass, avec une limite de vitess.
 		if (other instanceof Food) {
 			PVector force = other.attract(this);
 			PVector f = PVector.div(force, mass);
