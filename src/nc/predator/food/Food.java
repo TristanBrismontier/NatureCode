@@ -6,7 +6,7 @@ import nc.Mover;
 import nc.NoiseP;
 
 /**
- * Le Mover Food fuit les predateurs
+ * Le Mover Food attires les predateurs
  *
  * @author Tristan Brismontier
  * 
