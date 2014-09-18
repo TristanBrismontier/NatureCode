@@ -27,31 +27,22 @@ public class Gravity extends PApplet {
 
 	public void draw() {
 		background(255);
-//		lights();
 		spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
-
-		translate(150, 0, -height*(float)1.5);
+		translate(150, 0, -side*(float)1.5);
 		if(mousePressed){
 			rX=mouseX;
 			rY=mouseY;
 		}
 		rotateY((float)rX/100);
 		rotateX((float)rY/100);
-	
-
 		
 		pushMatrix();
-		translate(height/2, height/2, height/2);
-		stroke(0);
-		noFill();
-		box(height);
-		
+			translate(height/2, height/2, height/2);
+			stroke(0);
+			noFill();
+			box(height);
 		popMatrix();
 		
-		
-		
-		
-
 		for (Mover bm : bmE) {
 			for (Mover bmA : bmE) {
 				bm.applyForce(bmA.attract(bm));
@@ -62,6 +53,6 @@ public class Gravity extends PApplet {
 			}
 			bm.display();
 		}
-		translate(150, 0, -height*(float)1.75);
+		translate(150, 0, -side*(float)1.75);
 	}
 }
