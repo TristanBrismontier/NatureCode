@@ -5,6 +5,14 @@ import processing.core.PVector;
 import nc.Mover;
 import nc.NoiseP;
 
+/**
+ * Le Mover Food fuit les predateurs
+ *
+ * @author Tristan Brismontier
+ * 
+ * Based on book: Nature of Code by DANIEL SHIFFMAN 
+ */
+
 public class Food extends Mover {
 
 	public Food(PApplet p, float m, boolean d3) {
