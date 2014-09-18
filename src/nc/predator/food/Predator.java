@@ -4,6 +4,15 @@ import processing.core.PApplet;
 import processing.core.PVector;
 import nc.Mover;
 
+/**
+ * Le Mover Predateur répulse la food 
+ *
+ * @author Tristan Brismontier
+ * 
+ * Based on book: Nature of Code by DANIEL SHIFFMAN 
+ */
+ 
+
 public class Predator extends Mover {
 
 	public Predator(PApplet p, float m, boolean d3) {
