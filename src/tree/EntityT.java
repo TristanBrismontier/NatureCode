@@ -10,8 +10,7 @@ public class EntityT {
 	float width;
 	float height;
 
-	public EntityT(PApplet p, ColorT color, PVector location, float width,
-			float height) {
+	public EntityT(PApplet p, ColorT color, PVector location, float width, float height) {
 		super();
 		this.p = p;
 		this.color = color;
