@@ -9,11 +9,11 @@ public class BoostMove extends Mover{
 	float maxDef;
 	
 	public BoostMove(PApplet p, float mass) {
-		super(p,mass,false);
+		super(p,mass);
 		this.mass = mass;
 		xDef = 1;
 		yDef = 1;
-		maxDef = (float)0.5; 
+		maxDef = 0.5f; 
 	}
 	
 	@Override

@@ -16,7 +16,7 @@ import nc.NoiseP;
 public class Food extends Mover {
 
 	public Food(PApplet p, float m, boolean d3) {
-		super(p, m, d3);
+		super(p, m);
 	}
 
 	public void display2D(){
@@ -45,7 +45,7 @@ public class Food extends Mover {
 	public PVector attract(Mover m) {
 		PVector force = PVector.sub(location, m.location);
 		float distance = force.mag();
-		distance = p.constrain(distance, (float) 5, (float) 25);
+		distance = p.constrain(distance, 5f, 25f);
 
 		force.normalize();
 		float strenght = (G * mass * m.mass) / (distance * distance);

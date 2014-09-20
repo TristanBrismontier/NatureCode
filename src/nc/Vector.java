@@ -10,7 +10,7 @@ public class Vector extends PApplet{
 
 	List<BoostMove> bm = new ArrayList<BoostMove>();
 	PVector wind = new PVector((float)0.05, 0);
-	float c = (float) 0.01;
+	float c = 0.01f;
 	
 	
 	public void setup() {
@@ -28,7 +28,7 @@ public class Vector extends PApplet{
 		for (BoostMove bmE : bm) {
 			bmE.applyForce(wind);
 			
-			PVector gravity = new PVector(0,(float)0.1*bmE.mass);
+			PVector gravity = new PVector(0,0.1f*bmE.mass);
 			bmE.applyForce(gravity);
 			
 			PVector friction = bmE.velocity.get();

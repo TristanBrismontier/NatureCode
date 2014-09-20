@@ -5,7 +5,7 @@ import processing.core.PVector;
 import nc.Mover;
 
 /**
- * Le Mover Predateur répulse la food 
+ * Le Mover Predateur rÃ©pulse la food 
  *
  * @author Tristan Brismontier
  * 
@@ -16,12 +16,12 @@ import nc.Mover;
 public class Predator extends Mover {
 
 	public Predator(PApplet p, float m, boolean d3) {
-		super(p, m, d3);
+		super(p, m);
 	}
 
 	public void interac(Mover other) {
-		//interact devrais définir un vector vitess plustôt qu'une accélération
-		// ou bien définir une accélération non limité par le mass, avec une limite de vitess.
+		//interact devrais definir un vector vitess pluste qu'une accÃ©lÃ©ration
+		// ou bien definir une acceleration non limite par le mass, avec une limite de vitess.
 		if (other instanceof Food) {
 			PVector force = other.attract(this);
 			PVector f = PVector.div(force, mass);
@@ -32,7 +32,7 @@ public class Predator extends Mover {
 	public PVector attract(Mover m) {
 		PVector force = (m instanceof Food)?PVector.sub(m.location, location):PVector.sub(location, m.location);
 		float distance = force.mag();
-		distance = p.constrain(distance, (float) 5, (float) 25);
+		distance = p.constrain(distance, 5f, 25f);
 
 		force.normalize();
 		float strenght = (G * mass * m.mass) / (distance * distance);

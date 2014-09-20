@@ -5,8 +5,6 @@ import java.util.List;
 
 import processing.core.*;
 
-
-
 public class Gravity extends PApplet {
 
 	List<Mover> bmE = new ArrayList<Mover>();
@@ -17,25 +15,24 @@ public class Gravity extends PApplet {
 	public void setup() {
 		side = 800;
 		size(800, 800,OPENGL);
-		background(255);
 		for (int i = 0; i < 25; i++) {
-			bmE.add(new Mover(this, random(1, 8),true));
+			bmE.add(new Mover3D(this, random(1, 8)));
 		}
-		bmE.add(new Mover(this, 50,true,new PVector(side/2,side/2,side/2)));
+		bmE.add(new Mover3D(this, 50,new PVector(side/2,side/2,side/2)));
 		
 	}
 
 	public void draw() {
 		background(255);
 		spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
-		translate(150, 0, -side*(float)1.5);
+		translate(150, 0, -side*1.5f);
 		if(mousePressed){
 			rX=mouseX;
 			rY=mouseY;
 			System.out.println(mouseX+ " " +mouseY);
 		}
-		rotateY((float)rX/100);
-		rotateX((float)rY/100);
+		rotateY(rX/100);
+		rotateX(rY/100);
 		
 		pushMatrix();
 			translate(height/2, height/2, height/2);
@@ -54,6 +51,6 @@ public class Gravity extends PApplet {
 			}
 			bm.display();
 		}
-		translate(150, 0, -side*(float)1.75);
+		translate(150, 0, -side*1.75f);
 	}
 }

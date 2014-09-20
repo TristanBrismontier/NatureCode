@@ -1,4 +1,4 @@
-package oscillation;
+package nc.oscillation;
 
 import processing.core.PApplet;
 import processing.core.PVector;
@@ -7,7 +7,12 @@ public class Oscillation extends PApplet {
 	
 	final float size= 300;
 	final float stickLenght = 50;
-	int angle = 0;
+	final PVector firstLocation = new PVector(-stickLenght/2, 0);
+	final PVector secondLocation = new PVector(stickLenght/2, 0);
+	float angle = 0;
+	float angleSpeed = 1;
+	float angleAcc = 0.001f;
+	
 	
 	public void setup(){
 		size((int)size, (int)size);
@@ -17,15 +22,12 @@ public class Oscillation extends PApplet {
 	public void draw() {
 		background(255);
 		translate(size/2, size/2);
-		rotate(radians(angle+=5));
-		
-		final PVector firstLocation = new PVector(-stickLenght/2, 0);
-		final PVector secondLocation = new PVector(stickLenght/2, 0);
-
+		rotate(radians(angle));
 		line(firstLocation, secondLocation);
 		ellipse(firstLocation,10);
 		ellipse(secondLocation,10);
-		
+		angleSpeed += angleAcc;
+		angle += angleSpeed;
 	}
 	
 	private void ellipse(PVector v1, int i) {
