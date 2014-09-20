@@ -33,7 +33,14 @@ public class Stick extends EntityT {
 			parent.noStroke();
 			parent.fill((parentStick?150:75)-life,life);
 			float wid = width *(life/255);
-			parent.ellipse(location.x, location.y, wid, wid);
+			parent.pushMatrix();
+			parent.translate(location.x,	location.y,location.z);
+			
+				parent.sphere(wid);
+			
+			parent.popMatrix();
+			
+			
 			computeNewData();
 		}
 		for (Stick stick : sticks) {

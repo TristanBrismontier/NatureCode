@@ -32,6 +32,7 @@ public class Gravity extends PApplet {
 		if(mousePressed){
 			rX=mouseX;
 			rY=mouseY;
+			System.out.println(mouseX+ " " +mouseY);
 		}
 		rotateY((float)rX/100);
 		rotateX((float)rY/100);
