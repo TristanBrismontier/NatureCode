@@ -29,17 +29,17 @@ public class Mover {
 	}
 
 	public void display(){
-		p.stroke(0);
-		p.fill(0, 0, 0, 125);
-		p.ellipse(location.x, location.y, mass*5, mass*5);
-		
-		//draw Velocity Direction;
 		p.pushMatrix();
 		p.translate(location.x, location.y);
-		PVector direction = velocity.get();
-		direction.normalize();
-		direction.mult(mass*3);
-		p.line(0,0,direction.x,direction.y);		
+		
+		p.stroke(0);
+		p.fill(0, 0, 0, 125);
+		p.ellipse(0, 0, mass*5, mass*5);
+		
+		//draw Velocity Direction;
+
+		p.rotate(velocity.heading());
+		p.line(0,0,mass*3,0);		
 		p.popMatrix();
 	}
 
