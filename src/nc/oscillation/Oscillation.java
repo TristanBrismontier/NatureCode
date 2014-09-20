@@ -12,14 +12,61 @@ public class Oscillation extends PApplet {
 	float angle = 0;
 	float angleSpeed = 1;
 	float angleAcc = 0.001f;
+	float r;
+	float eloigne;
+	float s;
+	boolean sens = true;
 	
+	float tr = 0;
+	float tg = 1000;
+	float tb = 100000;
 	
 	public void setup(){
 		size((int)size, (int)size);
 		background(255);
+		s = 10;
+		r = 0;
+		smooth();
+		eloigne = 0.00277f *2 *s;
+		System.out.println(r+ " " +eloigne );
+		frameRate(10000);
 	}
 	
 	public void draw() {
+		spiral();
+		
+	}
+	
+	private void spiral(){
+		translate(size/2, size/2);
+		float x = r * cos(radians(angle));
+		float y = r * sin(radians(angle));
+		
+		fill(noisecolor(tr),noisecolor(tg),noisecolor(tb));
+		noStroke();
+		ellipse(x, y, s, s);
+		
+		if(r > 220 || r<0){
+			sens = !sens;
+		}
+		
+		if(sens){
+			r += eloigne;
+			angle++;
+		}else{
+			r -= eloigne;
+			angle--;
+		}
+		tr += 0.001f;
+		tg += 0.001f;
+		tb += 0.001f;
+	}
+	
+	private float noisecolor(float tr2) {
+		return map(noise(tr2), 0, 1, 0, 255);
+	}
+
+	private void turnStick(){
 		background(255);
 		translate(size/2, size/2);
 		rotate(radians(angle));
@@ -29,7 +76,6 @@ public class Oscillation extends PApplet {
 		angleSpeed += angleAcc;
 		angle += angleSpeed;
 	}
-	
 	private void ellipse(PVector v1, int i) {
 		strokeWeight(2);
 		fill(125);
