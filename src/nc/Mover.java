@@ -10,7 +10,7 @@ public class Mover {
 	protected PVector acceleration;
 	public float mass;
 	protected float G;
-	protected final float absCine;
+	protected float absCine;
 
 
 	public Mover(PApplet p, float m) {
