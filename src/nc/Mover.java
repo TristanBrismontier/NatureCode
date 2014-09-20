@@ -34,7 +34,13 @@ public class Mover {
 		p.ellipse(location.x, location.y, mass*5, mass*5);
 		
 		//draw Velocity Direction;
-		
+		p.pushMatrix();
+		p.translate(location.x, location.y);
+		PVector direction = velocity.get();
+		direction.normalize();
+		direction.mult(mass*3);
+		p.line(0,0,direction.x,direction.y);		
+		p.popMatrix();
 	}
 
 	public void update() {

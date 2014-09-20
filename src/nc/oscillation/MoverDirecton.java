@@ -12,7 +12,7 @@ public class MoverDirecton extends PApplet {
 	
 	public void setup(){
 		size(500,500);
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 10; i++) {
 			bmE.add(new Mover(this, random(2, 10)));
 		}
 	}
