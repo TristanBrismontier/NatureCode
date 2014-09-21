@@ -4,6 +4,9 @@ import processing.core.PApplet;
 
 public class Hook extends PApplet {
 
+	float angle = 0;
+	float aVelocity = 0.05f;
+	
 	public void setup(){
 		size(500,500);
 		
@@ -14,7 +17,9 @@ public class Hook extends PApplet {
 		
 		float periode = 120;
 		float amp = 100;
-		float y = amp * cos(TWO_PI * frameCount / periode);
+		float y = amp * cos(angle);
+		
+		angle +=aVelocity;
 		
 		stroke(0);
 		fill(175);
