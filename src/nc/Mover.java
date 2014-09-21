@@ -69,25 +69,31 @@ public class Mover {
 		return force;
 	}
 
-	public void checkEdge() {
+	public boolean checkEdge() {
+		boolean contact = false;
 			if (location.x > p.width -  mass * 5/2) {
 				location.x = p.width -  mass * 5/2;
 				velocity.x *= -1;
 				velocity.mult(absCine);
+				contact = true;
 			} else if (location.x <  mass * 5/2) {
 				location.x =  mass * 5/2;
 				velocity.x *= -1;
 				velocity.mult(absCine);
+				contact = true;
 			}
 
 			if (location.y > p.height -  mass * 5/2) {
 				location.y = p.height -  mass * 5/2;
 				velocity.y *= -1;
 				velocity.mult(absCine);
+				contact = true;
 			} else if (location.y <  mass * 5/2) {
 				location.y =  mass * 5/2;
 				velocity.y *= -1;
 				velocity.mult(absCine);
+				contact = true;
 			}
+			return contact;
 	}
 }

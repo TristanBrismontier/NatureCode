@@ -33,7 +33,7 @@ public class BoostMove extends Mover{
 		p.ellipse(location.x, location.y, mass*xDef, mass*yDef);
 	}
 	
-public void checkEdge(){
+public boolean checkEdge(){
 		
 		checkNearContact();
 		
@@ -52,6 +52,7 @@ public void checkEdge(){
 			 location.y = 0;
 			 velocity.y *= -1;
 		 }
+		 return false;
 	}
 	
 	private void checkNearContact() {

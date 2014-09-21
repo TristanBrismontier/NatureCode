@@ -34,7 +34,6 @@ public class Oscillation extends PApplet {
 	
 	public void draw() {
 		spiral();
-		
 	}
 	
 	private void spiral(){

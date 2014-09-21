@@ -31,7 +31,7 @@ public class Mover3D extends Mover {
 	}
 	
 	@Override
-	public void checkEdge() {
+	public boolean checkEdge() {
 
 		if (location.x > p.width -  mass * 5/2) {
 			location.x = p.width -  mass * 5/2;
@@ -62,6 +62,8 @@ public class Mover3D extends Mover {
 			velocity.z *= -1;
 			velocity.mult(absCine);
 		}
+		
+		return false;
 	}
 	
 
