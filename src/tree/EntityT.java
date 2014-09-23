@@ -14,14 +14,11 @@ public class EntityT {
 		super();
 		this.p = p;
 		this.color = color;
-		this.location = location;
+		this.location = location.get();
 		this.width = width;
 		this.height = height;
 	}
 
-	public PApplet getp() {
-		return p;
-	}
 	public ColorT getColor() {
 		return color;
 	}
