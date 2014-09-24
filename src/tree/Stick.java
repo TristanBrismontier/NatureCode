@@ -1,6 +1,7 @@
 package tree;
 import java.util.ArrayList;
 import java.util.List;
+
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -28,29 +29,24 @@ public class Stick extends EntityT {
 		vampireLife = 100;
 	}
 
-	public float display(){
+	public List<PVectorWidth>  display(){
+		final List<PVectorWidth> buleList = new ArrayList<PVectorWidth>();
 		if(life > 0){
-			p.noStroke();
-			p.fill((pStick?150:75)-life,life);
-			float wid = width *(life/255);
-//			p.pushMatrix();
-//			p.translate(location.x,	location.y,location.z);
-//			
-//				p.sphere(wid);
-//			
-//			p.popMatrix();
-			p.ellipse(location.x, location.y, wid , wid);
+			final PVectorWidth self = new PVectorWidth(location, width *(life/255), (pStick?150:75)-life, life);
+			buleList.add(self);
 			computeNewData();
 		}
 		final List<Stick> stickToRemove = new ArrayList<Stick>();
 		for (Stick stick : sticks) {
-			float lifeChild = stick.display();
-			if(lifeChild<=0){
+			List<PVectorWidth> childList = stick.display();
+			if(childList.isEmpty()){
 				stickToRemove.add(stick);
+			}else{
+				buleList.addAll(childList);
 			}
 		}
 		sticks.removeAll(stickToRemove);
-		return (sticks.isEmpty())?1:life;
+		return buleList;
 	}
 	
 	private void computeNewData() {
