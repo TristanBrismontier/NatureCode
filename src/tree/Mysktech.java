@@ -11,6 +11,7 @@ public class Mysktech extends PApplet {
 	float rX;
 	float rY;
 	int side = 800;
+	boolean compute = true;
 	List<PVectorWidth> buleList = new ArrayList<PVectorWidth>();	
 	
 	public void setup() {
@@ -20,8 +21,15 @@ public class Mysktech extends PApplet {
 	}
 
 	public void draw() {
-		
-		buleList.addAll(stick.display());
+		if(compute){
+			List<PVectorWidth> buleListComputed = stick.display();
+			buleList.addAll(buleListComputed);
+			if (buleListComputed.isEmpty()) {
+				System.out.println("finish");
+				compute = false;
+				
+			}
+		}
 		if(frameCount%10 == 0){
 			background(255);
 			pushMatrix();
@@ -41,8 +49,9 @@ public class Mysktech extends PApplet {
 	}
 
 	private void initStick(){
+		compute = true;
 		buleList = new ArrayList<PVectorWidth>();	
-		stick = new Stick(this, new PVector(0, 0), 50, 255);
+		stick = new Stick(this, new PVector(0, 0), 50, 230);
 		background(255);
 	}
 	

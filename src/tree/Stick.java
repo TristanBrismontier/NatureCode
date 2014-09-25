@@ -71,7 +71,7 @@ public class Stick extends EntityT {
 		velocity.y -=  p.random(-1,2) /500;
 		velocity.x +=  p.random(-2,2) /100;
 		p.constrain(velocity.x, -0.7f, 0.7f);
-		if(p.random(300)> life && percent(2.5f)) addstick();
+		if(p.random(200)> life && percent(2.5f)) addstick();
 	}
 	
 	private boolean percent(final float chance){
