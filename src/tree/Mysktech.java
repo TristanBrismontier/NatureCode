@@ -8,6 +8,7 @@ import processing.core.PVector;
 public class Mysktech extends PApplet {
 
 	Stick stick;
+	int p=0;
 	float rX;
 	float rY;
 	int side = 800;
@@ -15,7 +16,7 @@ public class Mysktech extends PApplet {
 	List<PVectorWidth> buleList = new ArrayList<PVectorWidth>();	
 	
 	public void setup() {
-		size(side,side);
+		size(side,side, P3D);
 		initStick();
 		smooth();
 	}
@@ -23,24 +24,31 @@ public class Mysktech extends PApplet {
 	public void draw() {
 		if(compute){
 			List<PVectorWidth> buleListComputed = stick.display();
-			buleList.addAll(buleListComputed);
+			if(frameCount%4 == 0){
+				buleList.addAll(buleListComputed);
+			}
 			if (buleListComputed.isEmpty()) {
 				System.out.println("finish");
 				compute = false;
 				
 			}
 		}
-		if(frameCount%10 == 0){
+		p++;
+		
+		 background(255);
+		 
+//		  camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
+		  translate(width/2, height, -200);
+		  rotateY(radians(p++));
 			background(255);
-			pushMatrix();
-			translate(width/2, height);
 			for (PVectorWidth unit : buleList) {
 				noStroke();
-				fill(unit.getGrey(),unit.getAlpha());
-				ellipse(unit.x, unit.y, unit.getWid(), unit.getWid());
+				fill(unit.getGrey());
+				pushMatrix();
+				translate(unit.x, unit.y,unit.z);
+				sphere(unit.getWid());
+				popMatrix();
 			}
-			popMatrix();
-		}
 		
 	}
 
@@ -51,7 +59,7 @@ public class Mysktech extends PApplet {
 	private void initStick(){
 		compute = true;
 		buleList = new ArrayList<PVectorWidth>();	
-		stick = new Stick(this, new PVector(0, 0), 50, 230);
+		stick = new Stick(this, new PVector(0, 0), 50,100);
 		background(255);
 	}
 	

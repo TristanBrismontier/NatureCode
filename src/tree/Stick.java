@@ -24,7 +24,7 @@ public class Stick extends EntityT {
 		super(p, null, location, width, width);
 		sticks = new ArrayList<Stick>();
 		this.life = life;	
-		this.velocity = new PVector(0,0.1f,0);
+		this.velocity = new PVector(0,-0.3f,0);
 		pStick = true;
 		vampireLife = 100;
 	}
@@ -32,8 +32,10 @@ public class Stick extends EntityT {
 	public List<PVectorWidth>  display(){
 		final List<PVectorWidth> buleList = new ArrayList<PVectorWidth>();
 		if(life > 0){
-			final PVectorWidth self = new PVectorWidth(location, width *(life/255), (pStick?150:75)-life, life);
-			buleList.add(self);
+			final PVectorWidth self = new PVectorWidth(location, width *(life/255), 75-life, life);
+			if(width *(life/255) >=2){
+				buleList.add(self);
+			}
 			computeNewData();
 		}
 		final List<Stick> stickToRemove = new ArrayList<Stick>();
@@ -62,7 +64,9 @@ public class Stick extends EntityT {
 	private void computeChildStick() {
 		velocity.y -= p.random(-2,2)/500;
 		velocity.x += p.random(-3.5f,3.5f) /100;
+		velocity.z += p.random(-3.5f,3.5f) /100;
 		p.constrain(velocity.x, -0.95f, 0.95f);
+		p.constrain(velocity.z, -0.95f, 0.95f);
 		p.constrain(velocity.y, -9f, -0.05f);
 		if(p.random(115)> life && percent(1.5f)) addstick();
 	}
@@ -70,7 +74,10 @@ public class Stick extends EntityT {
 	private void computeParentStick() {
 		velocity.y -=  p.random(-1,2) /500;
 		velocity.x +=  p.random(-2,2) /100;
-		p.constrain(velocity.x, -0.7f, 0.7f);
+		velocity.z +=  p.random(-2,2) /100;
+		p.constrain(velocity.x, -0.95f, 0.95f);
+		p.constrain(velocity.z, -0.95f, 0.95f);
+		
 		if(p.random(200)> life && percent(2.5f)) addstick();
 	}
 	
@@ -79,14 +86,13 @@ public class Stick extends EntityT {
 	}
 
 	private void addstick() {
-		float ratiolife = (pStick)?0.50f:0.80f;
+		float ratiolife = (pStick)?0.65f:0.80f;
 		float ratioWidth = (pStick)?0.75f:0.9f;
 		//add map instead
-		PVector newVelocity = new PVector(velocity.x+(p.random(-1,1)*0.3f), velocity.y+(p.random(-1,1)*0.1f),0);
+		PVector newVelocity = new PVector(velocity.x+(p.random(-1,1)*0.3f), velocity.y+(p.random(-1,1)*0.1f),velocity.z+(p.random(-1,1)*0.3f));
 		sticks.add(new Stick(p, location, width*ratioWidth, life*ratiolife, newVelocity));
 		vampireLife -= 1.2f;
-		float vamprisedLife = life*(vampireLife/100f);
-		life =(pStick)? vamprisedLife :life *0.97f;
+		life =life *0.97f;
 	}
 
 }
