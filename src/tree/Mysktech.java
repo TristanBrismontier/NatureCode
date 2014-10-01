@@ -36,14 +36,13 @@ public class Mysktech extends PApplet {
 		p++;
 		
 		 background(255);
-		 
+		 spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
 //		  camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
 		  translate(width/2, height, -200);
 		  rotateY(radians(p++));
 			background(255);
 			for (PVectorWidth unit : buleList) {
 				noStroke();
-				fill(unit.getGrey());
 				pushMatrix();
 				translate(unit.x, unit.y,unit.z);
 				sphere(unit.getWid());
@@ -59,7 +58,7 @@ public class Mysktech extends PApplet {
 	private void initStick(){
 		compute = true;
 		buleList = new ArrayList<PVectorWidth>();	
-		stick = new Stick(this, new PVector(0, 0), 50,100);
+		stick = new Stick(this, new PVector(0, 0), 50,80);
 		background(255);
 	}
 	
