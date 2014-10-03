@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-macosx-universal.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-windows-amd64.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-windows-i586.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Workspace/guava-18.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

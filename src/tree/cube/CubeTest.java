@@ -13,17 +13,10 @@ public class CubeTest extends PApplet{
 	
 	public void draw() {
 		
-		  background(255);
-		  camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
-		  translate(width/2, height/2, -100);
-		  stroke(0);
-		  noFill();
-		  box(200);
-		  pushMatrix();
-	
-		  translate(0, height/8, 0);
-		  sphere(10);
-		  popMatrix();
+		PVector p = new PVector(5,5);
+		PVector p2 = new PVector(6,5);
+		
+		System.out.println(p.dist(p2));
 		  
 	}
 }
