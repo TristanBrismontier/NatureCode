@@ -9,7 +9,6 @@ import java.util.UUID;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-import com.google.common.collect.Iterables;
 
 public class Mysktech extends PApplet {
 
@@ -61,12 +60,15 @@ public class Mysktech extends PApplet {
 			background(255);
 			noStroke();
 			for(Entry<UUID,List<PVectorWidth>> entry : buleMap.entrySet()) {
+				PVectorWidth last =null;
 			   for (PVectorWidth unit : entry.getValue()) {
-				   count++;
+				   if(last != null){
+					count++;
 					pushMatrix();
-					translate(unit.x, unit.y,unit.z);
-					sphere(unit.getWid());
+					drawCylinder(9, last, unit);
 					popMatrix();
+				   }
+					last=unit;
 			}
 			}
 			System.out.println(count);
@@ -76,10 +78,28 @@ public class Mysktech extends PApplet {
 		initStick();
 	}
 
+	void drawCylinder(int sides,PVectorWidth last,PVectorWidth current)
+	{
+	    float angle = 360 / sides;
+	    float r1 = last.getWid();
+	    float r2 = current.getWid();
+    
+	 // draw body
+	    beginShape(TRIANGLE_STRIP);
+	    for (int i = 0; i < sides + 1; i++) {
+	        float x1 = cos( radians( i * angle ) ) * r1;
+	        float z1 = sin( radians( i * angle ) ) * r1;
+	        float x2 = cos( radians( i * angle ) ) * r2;
+	        float z2 = sin( radians( i * angle ) ) * r2;
+	        vertex( last.x + x1, last.y, last.z+z1 );
+	        vertex( current.x + x2, current.y, current.z+z2 );    
+	    }
+	    endShape(CLOSE);
+	}
 	private void initStick(){
 		compute = true;
 		buleMap = new HashMap<UUID, List<PVectorWidth>>();	
-		stick = new Stick(this, new PVector(0, 0), 50,80);
+		stick = new Stick(this, new PVector(0, 0), 50,150);
 		background(255);
 	}
 	
