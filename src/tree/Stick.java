@@ -34,7 +34,7 @@ public class Stick extends EntityT {
 		final List<PVectorWidth> buleList = new ArrayList<PVectorWidth>();
 		if(life > 0){
 			final PVectorWidth self = new PVectorWidth(location, width *(life/255), 75-life, life, id);
-			if(width *(life/255) >=2){
+			if(width *(life/255) >=1f){
 				buleList.add(self);
 			}
 			computeNewData();
@@ -78,8 +78,8 @@ public class Stick extends EntityT {
 		velocity.z +=  p.random(-2,2) /100;
 		p.constrain(velocity.x, -0.95f, 0.95f);
 		p.constrain(velocity.z, -0.95f, 0.95f);
-		
-		if(p.random(200)> life && percent(2.5f)) addstick();
+		System.out.println(life);
+		if(p.random(255)> life && percent(3.5f) || life<25 && percent(50f)) addstick();
 	}
 	
 	private boolean percent(final float chance){

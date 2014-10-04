@@ -16,6 +16,7 @@ public class Mysktech extends PApplet {
 
 	Stick stick;
 	int p=0;
+	float ratio = 5;
 	float rX;
 	float rY;
 	int side = 800;
@@ -51,13 +52,17 @@ public class Mysktech extends PApplet {
 				
 			}
 		}
+		if(ratio>1){
+			ratio-=0.005f;
+		}else{
+			ratio =1;
+		}
 		p++;
-		
 		 int count=0;
 		 background(255);
 		 spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
 //		  camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
-		  translate(width/2, height, -200);
+		  translate(width/2, height+20, -200);
 		  rotateY(radians(p++));
 			background(255);
 			noStroke();
@@ -73,7 +78,6 @@ public class Mysktech extends PApplet {
 					last=unit;
 			}
 			}
-			System.out.println(count);
 	}
 
 	public void mousePressed() { 
@@ -83,8 +87,8 @@ public class Mysktech extends PApplet {
 	void drawCylinder(int sides,PVectorWidth last,PVectorWidth current)
 	{
 	    float angle = 360 / sides;
-	    float r1 = last.getWid();
-	    float r2 = current.getWid();
+	    float r1 = last.getWid()/ratio;
+	    float r2 = current.getWid()/ratio;
     
 	 // draw body
 	    beginShape(TRIANGLE_STRIP);
@@ -99,9 +103,10 @@ public class Mysktech extends PApplet {
 	    endShape(CLOSE);
 	}
 	private void initStick(){
+		ratio = 5;
 		compute = true;
 		buleMap = new HashMap<UUID, List<PVectorWidth>>();	
-		stick = new Stick(this, new PVector(0, 0), 50,150);
+		stick = new Stick(this, new PVector(0, 0), 50,180);
 		background(255);
 	}
 	
