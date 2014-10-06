@@ -19,7 +19,7 @@ public class Mysktech extends PApplet {
 	float ratio = 5;
 	float rX;
 	float rY;
-	int side = 800;
+	final int side = 800;
 	boolean compute = true;
 	Map<UUID,List<PVectorWidth>> buleMap = new HashMap<UUID, List<PVectorWidth>>();	
 	
@@ -52,32 +52,26 @@ public class Mysktech extends PApplet {
 				
 			}
 		}
-		if(ratio>1){
-			ratio-=0.005f;
-		}else{
-			ratio =1;
-		}
+		
+		ratio = (ratio>1)?ratio-0.005f:1;
 		p++;
-		 int count=0;
-		 background(255);
-		 spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
-//		  camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
-		  translate(width/2, height+20, -200);
-		  rotateY(radians(p++));
-			background(255);
-			noStroke();
-			for(Entry<UUID,List<PVectorWidth>> entry : buleMap.entrySet()) {
-				PVectorWidth last =null;
-			   for (PVectorWidth unit : entry.getValue()) {
-				   if(last != null){
-					count++;
+		background(255);
+		noStroke();
+		spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
+//		camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
+		translate(width/2, height+20, -200);
+		rotateY(radians(p++));
+		for(Entry<UUID,List<PVectorWidth>> entry : buleMap.entrySet()) {
+			PVectorWidth last =null;
+			 for (PVectorWidth unit : entry.getValue()) {
+				if(last != null){
 					pushMatrix();
 					drawCylinder(9, last, unit);
 					popMatrix();
-				   }
-					last=unit;
+				}
+				last=unit;
 			}
-			}
+		}
 	}
 
 	public void mousePressed() { 
