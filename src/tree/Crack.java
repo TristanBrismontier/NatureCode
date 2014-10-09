@@ -12,7 +12,7 @@ import processing.core.PVector;
 import com.google.common.collect.Iterables;
 
 
-public class Mysktech extends PApplet {
+public class Crack extends PApplet {
 
 	Stick stick;
 	int p=0;
@@ -58,7 +58,7 @@ public class Mysktech extends PApplet {
 		noStroke();
 		spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
 //		camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
-		translate(width/2, height+20, -200);
+		translate(width/2, height/2, -200);
 		rotateY(radians(p++));
 		for(Entry<UUID,List<PVectorWidth>> entry : buleMap.entrySet()) {
 			PVectorWidth last =null;
@@ -99,13 +99,13 @@ public class Mysktech extends PApplet {
 		ratio = 5;
 		compute = true;
 		buleMap = new HashMap<UUID, List<PVectorWidth>>();	
-		stick = new Stick(this, new PVector(0, 0), 50,180);
+		stick = new Stick(this, new PVector(0, 0), 50,50);
 		background(255);
 	}
 	
     public static void main(String args[])
     {
-      PApplet.main(new String[] { Mysktech.class.getName() });
+      PApplet.main(new String[] { Crack.class.getName() });
     }
 
 }

@@ -90,7 +90,7 @@ public class Stick extends EntityT {
 		float ratiolife = (pStick)?0.65f:0.80f;
 		float ratioWidth = (pStick)?0.75f:0.9f;
 		//add map instead
-		PVector newVelocity = new PVector(velocity.x+(p.random(-1,1)*0.3f), velocity.y+(p.random(-1,1)*0.1f),velocity.z+(p.random(-1,1)*0.3f));
+		PVector newVelocity = new PVector(velocity.x+(p.random(-1,1)*0.3f), velocity.y+(p.random(-0.5f,3)*0.1f),velocity.z+(p.random(-1,1)*0.3f));
 		sticks.add(new Stick(p, location, width*ratioWidth, life*ratiolife, newVelocity));
 		vampireLife -= 1.2f;
 		life =life *0.97f;
