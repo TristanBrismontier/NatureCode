@@ -54,7 +54,7 @@ public class Mysktech extends PApplet {
 		
 		ratio = (ratio>1)?ratio-0.005f:1;
 		p++;
-		background(255);
+		background(0);
 		noStroke();
 		spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
 //		camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
