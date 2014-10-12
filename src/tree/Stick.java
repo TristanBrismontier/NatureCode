@@ -14,7 +14,7 @@ public class Stick extends EntityT {
 	float life;
 
 	public Stick(final PApplet p, PVector location, float width, float life, PVector velocity){
-		super(p, null, location, width, width, UUID.randomUUID());
+		super(p, location, width, width, UUID.randomUUID());
 		sticks = new ArrayList<Stick>();
 		this.life = life;	
 		this.velocity = velocity.get();
@@ -22,7 +22,7 @@ public class Stick extends EntityT {
 	}
 
 	public Stick(final PApplet p, PVector location, int width, float life){
-		super(p, null, location, width, width, UUID.randomUUID());
+		super(p, location, width, width, UUID.randomUUID());
 		sticks = new ArrayList<Stick>();
 		this.life = life;	
 		this.velocity = new PVector(0,-0.3f,0);
