@@ -30,7 +30,7 @@ public class Stick extends EntityT {
 		vampireLife = 100;
 	}
 
-	public List<PVectorWidth>  display(){
+	public ArrayList<PVectorWidth>  display(){
 		final ArrayList<PVectorWidth> buleList = new ArrayList<PVectorWidth>();
 		if(life > 0){
 			final PVectorWidth self = new PVectorWidth(location, width *(life/255), 75-life, life, id);

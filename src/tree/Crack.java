@@ -18,7 +18,7 @@ public class Crack extends PApplet {
 	float p = 0;
 	final int side = 800;
 	boolean compute = true;
-	ArrayList<MapPVector> buleMap = new ArrayList<MapPVector>();
+	ArrayList<MapPVector> pVectorMap = new ArrayList<MapPVector>();
 
 	public void setup() {
 		size(side, side, P3D);
@@ -36,29 +36,37 @@ public class Crack extends PApplet {
 		pointLight(51, 102, 126, 35, 40, 36);
 		translate(width / 2, height, -200);
 		rotateY(radians(p++));
-		for (Entry<UUID, List<PVectorWidth>> entry : buleMap.entrySet()) {
-			for (PVectorWidth unit : entry.getValue()) {
-				pushMatrix();
-				drawCylinder(unit);
-				popMatrix();
-			}
-		}
+		 for (int i = 0; i < pVectorMap.size(); i++){
+		       for (int j = 0; j < pVectorMap.get(i).pVectorWidths.size(); j++) {
+		        pushMatrix();
+		        drawCylinder(pVectorMap.get(i).pVectorWidths.get(j));
+		        popMatrix();
+		      }
+		    }
 	}
 
 	private void computeStickPosition() {
 		if (compute) {
-			List<PVectorWidth> buleListComputed = stick.display();
-			for (PVectorWidth pVectorWidth : buleListComputed) {
-				List<PVectorWidth> listbule = buleMap.get(pVectorWidth.getId());
+			ArrayList<PVectorWidth> buleListComputed = stick.display();
+			
+			
+			for (int i = 0; i < buleListComputed.size(); i++) {
+				ArrayList<PVectorWidth> listbule = null;
+				for (int j = 0; j < pVectorMap.size(); j++) {
+					if(pVectorMap.get(j).id == buleListComputed.get(i).getId()){
+						listbule = pVectorMap.get(j).pVectorWidths;
+					}
+				}
+				
 				if (listbule == null) {
 					listbule = new ArrayList<PVectorWidth>();
-					listbule.add(pVectorWidth);
-					buleMap.put(pVectorWidth.getId(), listbule);
+					listbule.add(buleListComputed.get(i));
+					pVectorMap.add(new MapPVector(buleListComputed.get(i).getId(), listbule));
 				} else {
-					PVectorWidth lastVector = Iterables.getLast(listbule);
-					if (abs(lastVector.dist(pVectorWidth)) >= pVectorWidth
+					PVectorWidth lastVector = listbule.get(listbule.size()-1);
+					if (abs(lastVector.dist(buleListComputed.get(i))) >= buleListComputed.get(i)
 							.getWid()) {
-						listbule.add(pVectorWidth);
+						listbule.add(buleListComputed.get(i));
 					}
 				}
 			}
@@ -82,9 +90,8 @@ public class Crack extends PApplet {
 	}
 
 	private void initStick() {
-		;
 		compute = true;
-		buleMap = new HashMap<UUID, List<PVectorWidth>>();
+		pVectorMap =  new ArrayList<MapPVector>();
 		stick = new Stick(this, new PVector(0, 0), 50, 180);
 		background(255);
 	}
