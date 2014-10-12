@@ -8,9 +8,9 @@ public class PVectorWidth extends PVector {
 	private final float wid;
 	private final float grey;
 	private final float alpha;
-	private final UUID id;
+	private final float id;
 
-	public PVectorWidth(final PVector vector, final float wid,final float grey,final float alpha, UUID id) {
+	public PVectorWidth(final PVector vector, final float wid,final float grey,final float alpha, float id) {
 		super(vector.x,vector.y,vector.z);
 		this.wid = wid;
 		this.grey = grey;
@@ -18,7 +18,7 @@ public class PVectorWidth extends PVector {
 		this.id = id;
 	}
 	
-	public UUID getId() {
+	public float getId() {
 		return id;
 	}
 

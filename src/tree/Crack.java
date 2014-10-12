@@ -18,7 +18,7 @@ public class Crack extends PApplet {
 	float p = 0;
 	final int side = 800;
 	boolean compute = true;
-	Map<UUID, List<PVectorWidth>> buleMap = new HashMap<UUID, List<PVectorWidth>>();
+	ArrayList<MapPVector> buleMap = new ArrayList<MapPVector>();
 
 	public void setup() {
 		size(side, side, P3D);
@@ -67,6 +67,12 @@ public class Crack extends PApplet {
 
 	public void mousePressed() {
 		initStick();
+		for (int i = 0; i < platformNames.length; i++) {
+			for (int j = 0; j < platformNames.length; j++) {
+				
+			}
+			
+		}
 	}
 
 	void drawCylinder(final PVectorWidth current) {

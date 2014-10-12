@@ -8,13 +8,13 @@ import processing.core.PVector;
 
 public class Stick extends EntityT {
 	final PVector velocity;
-	final List<Stick> sticks;
+	final ArrayList<Stick> sticks;
 	final boolean pStick;
 	float vampireLife ;
 	float life;
 
 	public Stick(final PApplet p, PVector location, float width, float life, PVector velocity){
-		super(p, location, width, width, UUID.randomUUID());
+		super(p, location, width, width, p.random(10000));
 		sticks = new ArrayList<Stick>();
 		this.life = life;	
 		this.velocity = velocity.get();
@@ -22,7 +22,7 @@ public class Stick extends EntityT {
 	}
 
 	public Stick(final PApplet p, PVector location, int width, float life){
-		super(p, location, width, width, UUID.randomUUID());
+		super(p, location, width, width, p.random(10000));
 		sticks = new ArrayList<Stick>();
 		this.life = life;	
 		this.velocity = new PVector(0,-0.3f,0);
@@ -31,7 +31,7 @@ public class Stick extends EntityT {
 	}
 
 	public List<PVectorWidth>  display(){
-		final List<PVectorWidth> buleList = new ArrayList<PVectorWidth>();
+		final ArrayList<PVectorWidth> buleList = new ArrayList<PVectorWidth>();
 		if(life > 0){
 			final PVectorWidth self = new PVectorWidth(location, width *(life/255), 75-life, life, id);
 			if(width *(life/255) >=1f){
@@ -39,7 +39,7 @@ public class Stick extends EntityT {
 			}
 			computeNewData();
 		}
-		final List<Stick> stickToRemove = new ArrayList<Stick>();
+		final ArrayList<Stick> stickToRemove = new ArrayList<Stick>();
 		for (Stick stick : sticks) {
 			List<PVectorWidth> childList = stick.display();
 			if(childList.isEmpty()){

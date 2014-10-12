@@ -10,9 +10,9 @@ public class EntityT {
 	PVector location;
 	float width;
 	float height;
-	final UUID id;
+	final float id;
 
-	public EntityT(PApplet p, PVector location, float width, float height,final UUID id) {
+	public EntityT(PApplet p, PVector location, float width, float height,final float id) {
 		super();
 		this.p = p;
 		this.id = id;
