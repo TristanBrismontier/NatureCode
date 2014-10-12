@@ -40,10 +40,10 @@ public class Stick extends EntityT {
 			computeNewData();
 		}
 		final ArrayList<Stick> stickToRemove = new ArrayList<Stick>();
-		for (Stick stick : sticks) {
-			List<PVectorWidth> childList = stick.display();
+		for (int i = 0; i < sticks.size(); i++) {
+			List<PVectorWidth> childList = sticks.get(i).display();
 			if(childList.isEmpty()){
-				stickToRemove.add(stick);
+				stickToRemove.add(sticks.get(i));
 			}else{
 				buleList.addAll(childList);
 			}

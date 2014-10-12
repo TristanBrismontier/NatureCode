@@ -37,6 +37,7 @@ public class Crack extends PApplet {
 		translate(width / 2, height, -200);
 		rotateY(radians(p++));
 		 for (int i = 0; i < pVectorMap.size(); i++){
+			 
 		       for (int j = 0; j < pVectorMap.get(i).pVectorWidths.size(); j++) {
 		        pushMatrix();
 		        drawCylinder(pVectorMap.get(i).pVectorWidths.get(j));
