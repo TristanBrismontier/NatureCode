@@ -8,7 +8,7 @@ public class Particle extends Mover {
 	
 	float angle;
 	float aVelo;
-	float lifespan;
+	protected float lifespan;
 	
 	public Particle(PApplet p,PVector location) {
 		super(p, 20, location);
@@ -18,7 +18,13 @@ public class Particle extends Mover {
 		this.acceleration = new PVector(0f, 0.05f);
 		this.velocity = new PVector(p.random(-1.5f,1.5f),p.random(-1.5f,1.5f));
 	}
-
+	
+	static public class ParticleFactory implements ParticleFactoryI{
+		public Particle buildParticle(PApplet p,PVector location){
+			return new Particle(p,location);
+		}
+	}
+	
 	@Override
 	public void update() {
 		aVelo = p.constrain((velocity.x) / 10, -1f, 1f);
@@ -50,5 +56,5 @@ public class Particle extends Mover {
 	public void run() {
 		update();
 		display();
-	}
+	}	
 }

@@ -1,14 +1,18 @@
 package nc.oscillation.asteroids;
 
+import nc.Mover;
+import nc.oscillation.asteroids.BurstParticle.BurstParticleFactory;
+import nc.particle.ParticleSystem;
 import processing.core.PApplet;
 import processing.core.PVector;
-import nc.Mover;
 
 public class Ship extends Mover {
 
 	float oDeg;
 	float sheild;
 	boolean boost;
+	ParticleSystem<BurstParticle> rightBurst;
+	ParticleSystem<BurstParticle> leftBurst;
 	
 	public Ship(PApplet p, float m) {
 		super(p, m);
@@ -16,6 +20,8 @@ public class Ship extends Mover {
 		sheild = 0;
 		oDeg=0;
 		boost = false;
+		rightBurst = new ParticleSystem<BurstParticle>(p, new PVector(-4, 27),new BurstParticleFactory() );
+		leftBurst = new ParticleSystem<BurstParticle>(p, new PVector(5, 27),new BurstParticleFactory() );
 	}
 	
 	public void display(){
@@ -35,10 +41,12 @@ public class Ship extends Mover {
 	private void drawship() {
 		p.pushMatrix();
 		p.rotate(p.radians(oDeg));
+		rightBurst.run(boost);
+		leftBurst.run(boost);
 		p.stroke(0);
 		p.fill(0,125);
 		p.triangle(0, -8, -10, 20, 10, 20);
-		p.fill(0, boost?255:125);
+		p.fill(0,125);
 		p.rect(-7, 20, 5, 5);
 		p.rect(2, 20, 5, 5);
 		drawSheild();
@@ -56,6 +64,7 @@ public class Ship extends Mover {
 		if (boost) {
 			boost();
 		}
+		
 		super.update();
 		sheild--;
 		sheild = p.constrain(sheild, 0, 125);

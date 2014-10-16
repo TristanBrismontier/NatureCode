@@ -1,22 +1,18 @@
 package nc.particle;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import nc.Mover;
 import processing.core.PApplet;
 import processing.core.PVector;
-
+import nc.particle.Particle.ParticleFactory;
 public class ParticleApplet extends PApplet {
 
-	ParticleSystem system;
+	ParticleSystem<Particle> system;
 	final static float G =  0.4f;
 	final int side = 800;
 
 	public void setup() {
 		size(side, side);
-		system = new ParticleSystem(this, new PVector(width / 2, height/ 10));
+		system = new ParticleSystem<Particle>(this, new PVector(width / 2, height/ 10),new ParticleFactory());
 	}
 
 	public void draw() {
