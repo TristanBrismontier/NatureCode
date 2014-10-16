@@ -1,8 +1,8 @@
-package nc.particule;
+package nc.particle;
 
 import processing.core.*;
 
-public class Particule {
+public class Particle {
 	
 	final PApplet p;
 	PVector location;
@@ -13,7 +13,7 @@ public class Particule {
 	float mass;
 	float lifespan;
 	
-	public Particule(PApplet p,PVector location) {
+	public Particle(PApplet p,PVector location) {
 		this.location = location.get();
 		this.p = p;
 		this.angle = 0;
@@ -23,7 +23,7 @@ public class Particule {
 		this.acceleration = new PVector(0f, 0.05f);
 		this.velocity = new PVector(p.random(-2,2),p.random(-2,2));
 	}
-	
+		
 	private void update() {
 		aVelo = p.constrain((velocity.x) / 10, -1f, 1f);
 		angle += aVelo;
