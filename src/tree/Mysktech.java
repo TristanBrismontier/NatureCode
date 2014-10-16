@@ -21,7 +21,7 @@ public class Mysktech extends PApplet {
 	float rY;
 	final int side = 800;
 	boolean compute = true;
-	Map<UUID,List<PVectorWidth>> buleMap = new HashMap<UUID, List<PVectorWidth>>();	
+	Map<Float,List<PVectorWidth>> buleMap = new HashMap<Float, List<PVectorWidth>>();	
 	
 	public void setup() {
 		size(side,side, P3D);
@@ -60,7 +60,7 @@ public class Mysktech extends PApplet {
 //		camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
 		translate(width/2, height+20, -200);
 		rotateY(radians(p++));
-		for(Entry<UUID,List<PVectorWidth>> entry : buleMap.entrySet()) {
+		for(Entry<Float,List<PVectorWidth>> entry : buleMap.entrySet()) {
 			PVectorWidth last =null;
 			 for (PVectorWidth unit : entry.getValue()) {
 				if(last != null){
@@ -98,7 +98,7 @@ public class Mysktech extends PApplet {
 	private void initStick(){
 		ratio = 5;
 		compute = true;
-		buleMap = new HashMap<UUID, List<PVectorWidth>>();	
+		buleMap = new HashMap<Float, List<PVectorWidth>>();	
 		stick = new Stick(this, new PVector(0, 0), 50,180);
 		background(255);
 	}
