@@ -95,6 +95,7 @@ public class Mysktech extends PApplet {
 	    }
 	    endShape(CLOSE);
 	}
+	
 	private void initStick(){
 		ratio = 5;
 		compute = true;

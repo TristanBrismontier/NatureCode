@@ -16,7 +16,9 @@ public class WhiteWalker {
 	
 	void display(){
 		p.stroke(0);
-		p.point(x, y);		
+		p.point(x, y);	
+		
+	
 	}
 	
 	void walk(){
