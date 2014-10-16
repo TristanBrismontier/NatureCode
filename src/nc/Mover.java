@@ -25,7 +25,7 @@ public class Mover {
 	
 	public Mover(PApplet p, float m,PVector v){
 		this(p,m);
-		location = v;
+		location = v.get();
 	}
 
 	public void display(){

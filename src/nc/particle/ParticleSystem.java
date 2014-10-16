@@ -4,20 +4,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import nc.Mover;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class ParticleSystem {
-
-	final PApplet p;
+public class ParticleSystem extends Mover	 {
 	final List<Particle> particules;
-	PVector location;
-	PVector velocity;
-	PVector acceleration;
 	
-
-	public ParticleSystem(PApplet p) {
-		this.p = p;
+	public ParticleSystem(PApplet p, PVector location) {
+		super(p, 20, location);
 		this.particules = new ArrayList<Particle>();
 	}
 	
@@ -26,6 +21,7 @@ public class ParticleSystem {
 		  Iterator<Particle> it = particules.iterator();
 		  while (it.hasNext()) {
 			  Particle particle = it.next();
+			  particle.applyForce(attract(particle));
 			  particle.run();
 		      if (particle.isDead()) {
 		         it.remove();
@@ -36,6 +32,8 @@ public class ParticleSystem {
 	private void addParticle() {
 		particules.add(new Particle(p,location));
 	}
+	
+	
 
 
 }
