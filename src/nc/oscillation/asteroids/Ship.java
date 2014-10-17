@@ -19,8 +19,8 @@ public class Ship extends Mover {
 		sheild = 0;
 		oDeg=0;
 		boost = false;
-		rightBurst = new ParticleSystem(p, new PVector(-4, 27),(p,location) ->new BurstParticle(p, location));
-		leftBurst = new ParticleSystem(p, new PVector(5, 27),(p,location) ->new BurstParticle(p, location));
+		rightBurst = new ParticleSystem(p, new PVector(-4, 27),(p,location) ->new BurstParticle(p, location), false);
+		leftBurst = new ParticleSystem(p, new PVector(5, 27),(p,location) ->new BurstParticle(p, location), false);
 	}
 	
 	public void display(){

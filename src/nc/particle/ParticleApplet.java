@@ -11,7 +11,7 @@ public class ParticleApplet extends PApplet {
 
 	public void setup() {
 		size(side, side);
-		system = new ParticleSystem(this, new PVector(width / 2, height/ 10),(p,location) ->new Particle(p, location));
+		system = new ParticleSystem(this, new PVector(width / 2, height/ 10),(p,location) ->new Particle(p, location), true);
 	}
 
 	public void draw() {

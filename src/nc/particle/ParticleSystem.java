@@ -11,11 +11,13 @@ import processing.core.PVector;
 public class ParticleSystem extends Mover	 {
 	final List<Particle> particules;
 	ParticuleBuilder builder;
+	final boolean attract;
 	
-	public ParticleSystem(PApplet p, PVector location, ParticuleBuilder builder) {
+	public ParticleSystem(PApplet p, PVector location, ParticuleBuilder builder, boolean attract) {
 		super(p, 20, location);
 		this.particules = new ArrayList<Particle>();
 		this.builder = builder;
+		this.attract = attract;
 	}
 	
 	public void run(boolean addmore){
@@ -25,7 +27,9 @@ public class ParticleSystem extends Mover	 {
 		  Iterator<Particle> it = particules.iterator();
 		  while (it.hasNext()) {
 			  Particle particle = it.next();
-			  particle.applyForce(attract(particle));
+			  if(attract){
+				  particle.applyForce(attract(particle));
+			  }
 			  particle.run();
 		      if (particle.isDead()) {
 		         it.remove();
