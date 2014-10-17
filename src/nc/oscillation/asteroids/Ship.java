@@ -1,7 +1,6 @@
 package nc.oscillation.asteroids;
 
 import nc.Mover;
-import nc.oscillation.asteroids.BurstParticle.BurstParticleFactory;
 import nc.particle.ParticleSystem;
 import processing.core.PApplet;
 import processing.core.PVector;
@@ -11,17 +10,17 @@ public class Ship extends Mover {
 	float oDeg;
 	float sheild;
 	boolean boost;
-	ParticleSystem<BurstParticle> rightBurst;
-	ParticleSystem<BurstParticle> leftBurst;
+	ParticleSystem rightBurst;
+	ParticleSystem leftBurst;
 	
-	public Ship(PApplet p, float m) {
-		super(p, m);
+	public Ship(PApplet parent, float m) {
+		super(parent, m);
 		location = new PVector(p.width/2, p.height/2);
 		sheild = 0;
 		oDeg=0;
 		boost = false;
-		rightBurst = new ParticleSystem<BurstParticle>(p, new PVector(-4, 27),new BurstParticleFactory() );
-		leftBurst = new ParticleSystem<BurstParticle>(p, new PVector(5, 27),new BurstParticleFactory() );
+		rightBurst = new ParticleSystem(p, new PVector(-4, 27),(p,location) ->new BurstParticle(p, location));
+		leftBurst = new ParticleSystem(p, new PVector(5, 27),(p,location) ->new BurstParticle(p, location));
 	}
 	
 	public void display(){

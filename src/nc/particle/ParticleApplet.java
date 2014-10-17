@@ -3,16 +3,15 @@ package nc.particle;
 import nc.Mover;
 import processing.core.PApplet;
 import processing.core.PVector;
-import nc.particle.Particle.ParticleFactory;
 public class ParticleApplet extends PApplet {
 
-	ParticleSystem<Particle> system;
+	ParticleSystem system;
 	final static float G =  0.4f;
 	final int side = 800;
 
 	public void setup() {
 		size(side, side);
-		system = new ParticleSystem<Particle>(this, new PVector(width / 2, height/ 10),new ParticleFactory());
+		system = new ParticleSystem(this, new PVector(width / 2, height/ 10),(p,location) ->new Particle(p, location));
 	}
 
 	public void draw() {

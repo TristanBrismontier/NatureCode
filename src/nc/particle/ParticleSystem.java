@@ -8,21 +8,21 @@ import nc.Mover;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class ParticleSystem<T extends Particle> extends Mover	 {
-	final List<T> particules;
-	ParticleFactoryI factory;
+public class ParticleSystem extends Mover	 {
+	final List<Particle> particules;
+	ParticuleBuilder builder;
 	
-	public ParticleSystem(PApplet p, PVector location, ParticleFactoryI factory) {
+	public ParticleSystem(PApplet p, PVector location, ParticuleBuilder builder) {
 		super(p, 20, location);
-		this.particules = new ArrayList<T>();
-		this.factory = factory;
+		this.particules = new ArrayList<Particle>();
+		this.builder = builder;
 	}
 	
 	public void run(boolean addmore){
 		if(addmore){
 			addParticle();
 		}
-		  Iterator<T> it = particules.iterator();
+		  Iterator<Particle> it = particules.iterator();
 		  while (it.hasNext()) {
 			  Particle particle = it.next();
 			  particle.applyForce(attract(particle));
@@ -33,14 +33,11 @@ public class ParticleSystem<T extends Particle> extends Mover	 {
 		  }
 	}
 	
-	
-	
 	public void run(){
 		run(true);
 	}
 
 	private void addParticle() {
-		particules.add((T) factory.buildParticle(p,location));
+		particules.add(builder.build(p,location));
 	}
-	
 }

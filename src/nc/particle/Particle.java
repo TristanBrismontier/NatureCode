@@ -19,12 +19,6 @@ public class Particle extends Mover {
 		this.velocity = new PVector(p.random(-1.5f,1.5f),p.random(-1.5f,1.5f));
 	}
 	
-	static public class ParticleFactory implements ParticleFactoryI{
-		public Particle buildParticle(PApplet p,PVector location){
-			return new Particle(p,location);
-		}
-	}
-	
 	@Override
 	public void update() {
 		aVelo = p.constrain((velocity.x) / 10, -1f, 1f);

@@ -1,9 +1,8 @@
 package nc.oscillation.asteroids;
 
+import nc.particle.Particle;
 import processing.core.PApplet;
 import processing.core.PVector;
-import nc.particle.Particle;
-import nc.particle.ParticleFactoryI;
 
 public class BurstParticle extends Particle {
 
@@ -13,11 +12,6 @@ public class BurstParticle extends Particle {
 		this.lifespan=100;
 		this.acceleration = new PVector(0,0);
 		this.velocity = new PVector(p.random(-1.5f, 1.5f), p.random(0.01f, 2f));
-	}
-	static public class BurstParticleFactory implements ParticleFactoryI{
-		public BurstParticle buildParticle(PApplet p,PVector location){
-			return new BurstParticle(p,location);
-		}
 	}
 		
 	@Override
