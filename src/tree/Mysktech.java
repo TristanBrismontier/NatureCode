@@ -1,11 +1,13 @@
 package tree;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.UUID;
 
+import nc.particle.Particle;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -57,12 +59,13 @@ public class Mysktech extends PApplet {
 		background(0);
 		noStroke();
 		spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
-//		camera(mouseX*2,mouseY, (height/2) / tan(PI/6), width/2, height/3, 0, 0, 1, 0);
 		translate(width/2, height+20, -200);
 		rotateY(radians(p++));
 		for(Entry<Float,List<PVectorWidth>> entry : buleMap.entrySet()) {
 			PVectorWidth last =null;
-			 for (PVectorWidth unit : entry.getValue()) {
+			Iterator<PVectorWidth> uniterator = entry.getValue().iterator();
+			while (uniterator.hasNext()) {
+				 PVectorWidth unit = uniterator.next();
 				if(last != null){
 					pushMatrix();
 					drawCylinder(9, last, unit);
@@ -72,7 +75,7 @@ public class Mysktech extends PApplet {
 			}
 		}
 	}
-
+	  
 	public void mousePressed() { 
 		initStick();
 	}

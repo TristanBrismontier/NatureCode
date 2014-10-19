@@ -8,10 +8,10 @@ import nc.Mover;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class ParticleSystem extends Mover	 {
-	final List<Particle> particules;
-	ParticuleBuilder builder;
-	final boolean attract;
+public class ParticleSystem extends Mover{
+	protected final List<Particle> particules;
+	protected ParticuleBuilder builder;
+	protected final boolean attract;
 	
 	public ParticleSystem(PApplet p, PVector location, ParticuleBuilder builder, boolean attract) {
 		super(p, 20, location);
@@ -41,7 +41,7 @@ public class ParticleSystem extends Mover	 {
 		run(true);
 	}
 
-	private void addParticle() {
+	protected void addParticle() {
 		particules.add(builder.build(p,location));
 	}
 }

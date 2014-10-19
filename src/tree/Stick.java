@@ -8,7 +8,7 @@ import processing.core.PVector;
 
 public class Stick extends EntityT {
 	final PVector velocity;
-	final ArrayList<Stick> sticks;
+	final List<Stick> sticks;
 	final boolean pStick;
 	float vampireLife ;
 	float life;
