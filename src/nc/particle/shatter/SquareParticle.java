@@ -7,10 +7,11 @@ import nc.particle.Particle;
 public class SquareParticle extends Particle{
 	
 	boolean shatter;
+	static float s = 5;
 
 	public SquareParticle(PApplet p, PVector location) {
 		super(p, location);
-		this.mass = 2;
+		this.mass = s;
 		this.lifespan=500;
 		this.acceleration = new PVector(0,0);
 		this.velocity =  new PVector(0,0);

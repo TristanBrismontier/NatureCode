@@ -10,10 +10,12 @@ public class ShatterShape extends PApplet {
 
 	ShapeParticleSystem system;
 	final int side = 800;
-
+	final int sizeShape = 20;
+	
 	public void setup() {
 		size(side, side);
-		system = new ShapeParticleSystem(this, new PVector(width / 2, height/ 2),(p,location) ->new SquareParticle(p, location), 100);
+		
+		system = new ShapeParticleSystem(this, new PVector(width / 2, height/ 2),(p,location) ->new SquareParticle(p, location), sizeShape);
 	}
 
 	public void draw() {
@@ -29,6 +31,6 @@ public class ShatterShape extends PApplet {
 	
 	@Override
 	public void keyPressed() {
-		system = new ShapeParticleSystem(this, new PVector(width / 2, height/ 2),(p,location) ->new SquareParticle(p, location), 100);
+		system = new ShapeParticleSystem(this, new PVector(width / 2, height/ 2),(p,location) ->new SquareParticle(p, location), sizeShape);
 	}
 }

@@ -13,11 +13,12 @@ public class ShapeParticleSystem extends ParticleSystem {
 
 	public ShapeParticleSystem(PApplet p, PVector location,	ParticuleBuilder builder, int side) {
 		super(p, location, builder, false);
+		final float sizeParticle = SquareParticle.s;
 		PVector locationComp = location.get();
 		locationComp.mult(0.5f);
 		for (int i = 0; i < side; i++) {
 			for (int j = 0; j < side; j++) {
-				PVector particleLocation = new PVector(i*2, j*2);
+				PVector particleLocation = new PVector(i*sizeParticle, j*sizeParticle);
 				particleLocation.add(locationComp);
 				addParticle(particleLocation);
 			}
@@ -42,7 +43,8 @@ public class ShapeParticleSystem extends ParticleSystem {
 			velocityShatter.sub(particle.location);
 			velocityShatter.normalize();
 			velocityShatter.mult(-1);
-			velocityShatter.mult(new PVector(p.random(2f), p.random(2f)),1);
+			velocityShatter.x = velocityShatter.x *p.random(1.5f);
+			velocityShatter.y = velocityShatter.y *p.random(1.5f);
 			SquareParticle part = (SquareParticle) particle;
 			part.setShatter(velocityShatter);
 		}
