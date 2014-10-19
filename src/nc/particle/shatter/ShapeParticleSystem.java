@@ -13,7 +13,7 @@ public class ShapeParticleSystem extends ParticleSystem {
 
 	public ShapeParticleSystem(PApplet p, PVector location,	ParticuleBuilder builder, int side) {
 		super(p, location, builder, false);
-		final float sizeParticle = SquareParticle.s;
+		final float sizeParticle = SquareParticle.particuleSize;
 		PVector locationComp = location.get();
 		locationComp.mult(0.5f);
 		for (int i = 0; i < side; i++) {
