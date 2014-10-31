@@ -12,15 +12,15 @@ import org.jbox2d.dynamics.FixtureDef;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Box {
-	private Body body;
-	private Box2DProcessing box2d;
-	private final PApplet p;
+public class Body2D {
+	protected Body body;
+	protected Box2DProcessing box2d;
+	protected final PApplet p;
 	
-	private float gray;
-	private float size;
+	protected float gray;
+	protected float size;
 	
-	public Box(PApplet p, Box2DProcessing box2d, PVector location) {
+	public Body2D(PApplet p, Box2DProcessing box2d, PVector location) {
 		this.p = p;
 		this.box2d = box2d;
 		this.gray = 175;
@@ -46,6 +46,20 @@ public class Box {
 		
 		body.createFixture(fd);
 	}
+	
+	public Body2D(PApplet p, Box2DProcessing box2d, PVector location, boolean otherShape) {
+		this.p = p;
+		this.box2d = box2d;
+		this.gray = 175;
+		this.size = 20;
+		
+		BodyDef bd = new BodyDef();
+		bd.type = BodyType.DYNAMIC;
+	
+		bd.position.set(box2d.coordPixelsToWorld(location.x,location.y));
+		body = box2d.createBody(bd);
+	}
+	
 	
 	public void display() {
 		Vec2 pos = box2d.getBodyPixelCoord(body);
