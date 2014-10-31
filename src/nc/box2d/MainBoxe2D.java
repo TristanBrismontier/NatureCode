@@ -14,18 +14,23 @@ import processing.core.PVector;
 public class MainBoxe2D extends PApplet {
 
 	final List<Body2D> boxes = new ArrayList<Body2D>();
+	final List<Body2D> boundary = new ArrayList<Body2D>();
 	Box2DProcessing box2D;
 	
 	public void setup() {
 		size(800,800);
 		box2D = new Box2DProcessing(this);
-		box2D.createWorld(new Vec2(0.0f, 0.0f));
+		box2D.createWorld();
+		boundary.add(new Boundary(this, box2D, new PVector(200, 700), 300, 30));
+		boundary.add(new Boundary(this, box2D, new PVector(400, 500), 300, 30));
+		
 	}
 
 	public void draw() {
 		background(255);
 		box2D.step();
 		boxes.forEach(box -> box.display());
+		boundary.forEach(b -> b.display());
 		if(mousePressed){
 			if(random(10)>5){
 				boxes.add(new Body2D(this, box2D, new PVector(mouseX, mouseY)));

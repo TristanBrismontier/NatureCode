@@ -13,9 +13,9 @@ public class Cell extends Body2D {
 
 	public Cell(PApplet p, Box2DProcessing box2d, PVector location) {
 			super(p, box2d, location,true);
-			
+		
 			CircleShape ps = new CircleShape();
-			float box2dW = box2d.scalarPixelsToWorld(size/2);
+			float box2dW = box2d.scalarPixelsToWorld(whith/2);
 			
 			ps.setRadius(box2dW);
 			
@@ -37,9 +37,10 @@ public class Cell extends Body2D {
 		p.translate(pos.x, pos.y);
 		p.rotate(a);
 		p.fill(gray);
+		p.strokeWeight(2);
 		p.stroke(0);
-		p.rectMode(p.CENTER);
-		p.ellipse(0, 0, size, size);
+		p.ellipse(0, 0, whith, whith);
+		p.line(0, 0, whith/2, 0);
 		p.popMatrix();
 	}
 	

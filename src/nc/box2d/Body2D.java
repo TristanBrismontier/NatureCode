@@ -18,23 +18,29 @@ public class Body2D {
 	protected final PApplet p;
 	
 	protected float gray;
-	protected float size;
+	protected float whith;
+	protected float height;
 	
 	public Body2D(PApplet p, Box2DProcessing box2d, PVector location) {
+		this(p,box2d,location,p.random(50),p.random(50),BodyType.DYNAMIC);
+	}
+	
+	public Body2D(PApplet p, Box2DProcessing box2d, PVector location, float whith, float height, BodyType type) {
 		this.p = p;
 		this.box2d = box2d;
 		this.gray = 175;
-		this.size = 20;
+		this.whith = whith;
+		this.height = height;
 		
 		BodyDef bd = new BodyDef();
-		bd.type = BodyType.DYNAMIC;
+		bd.type = type;
 	
 		bd.position.set(box2d.coordPixelsToWorld(location.x,location.y));
 		body = box2d.createBody(bd);
 		
 		PolygonShape ps = new PolygonShape();
-		float box2dW = box2d.scalarPixelsToWorld(size/2);
-		float box2dH = box2d.scalarPixelsToWorld(size/2);
+		float box2dW = box2d.scalarPixelsToWorld(whith/2);
+		float box2dH = box2d.scalarPixelsToWorld(height/2);
 		
 		ps.setAsBox(box2dW, box2dH);
 		
@@ -51,7 +57,7 @@ public class Body2D {
 		this.p = p;
 		this.box2d = box2d;
 		this.gray = 175;
-		this.size = 20;
+		this.whith = p.random(50);
 		
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DYNAMIC;
@@ -72,7 +78,7 @@ public class Body2D {
 		p.fill(gray);
 		p.stroke(0);
 		p.rectMode(p.CENTER);
-		p.rect(0, 0, size, size);
+		p.rect(0, 0, whith, height);
 		p.popMatrix();
 		
 	}
