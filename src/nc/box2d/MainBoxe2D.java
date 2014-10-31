@@ -23,10 +23,7 @@ public class MainBoxe2D extends PApplet {
 	public void draw() {
 		background(255);
 		box2D.step();
-//		boxes.forEach(box -> box.display());
-		for (Box box : boxes) {
-			box.display();
-		}
+		boxes.forEach(box -> box.display());
 		if(mousePressed){
 			boxes.add(new Box(this, box2D, new PVector(mouseX, mouseY)));
 		}
