@@ -18,7 +18,6 @@ public class Boundary extends Body2D {
 	@Override
 	public void display() {
 		p.fill(0);
-		p.stroke(0);
 		p.rectMode(p.CENTER);
 		p.rect(location.x,location.y,whith,height);
 	}
