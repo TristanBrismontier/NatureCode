@@ -74,7 +74,7 @@ public class Body2D {
 		p.pushMatrix();
 	
 		p.translate(pos.x, pos.y);
-		p.rotate(a);
+		p.rotate(-a);
 		p.fill(gray);
 		p.stroke(0);
 		p.rectMode(p.CENTER);
