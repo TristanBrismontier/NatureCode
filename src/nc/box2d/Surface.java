@@ -22,7 +22,8 @@ public class Surface {
 		this.box2d = box2d;
 		
 		for (int i = 0; i < p.width; i++) {
-			surface.add(new Vec2(i,p.noise(i/10)*20+p.height/2+p.sin(i/10)*200)); 
+			
+			surface.add(new Vec2(i,p.noise((float)i/50)*100+p.height/2+p.cos((float)i/(p.width/16))*200)); 
 		}
 		
 		ChainShape chain = new ChainShape();
