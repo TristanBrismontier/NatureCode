@@ -30,7 +30,7 @@ public class MainBoxe2D extends PApplet {
 		boxes.forEach(box -> box.display());
 		surface.display();
 		if(mousePressed){
-				boxes.add(new Polygon(this, box2D, new PVector(mouseX, mouseY)));
+				boxes.add(new Icky(this, box2D, new PVector(mouseX, mouseY)));
 		}
 	}
 	
