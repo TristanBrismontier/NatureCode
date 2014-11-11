@@ -27,8 +27,8 @@ public class LinkParticule {
 		djd.bodyB = c2.body;
 		djd.length = box2d.scalarPixelsToWorld(80);
 		
-		djd.frequencyHz  = 2.5f;
-		djd.dampingRatio = 0.5f;
+		djd.frequencyHz  = 1f;
+		djd.dampingRatio = 1f;
 		DistanceJoint dj = (DistanceJoint) box2d.world.createJoint(djd);
 		
 	}
