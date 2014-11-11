@@ -42,8 +42,9 @@ public class Icky extends Body2D {
 		p.fill(175);
 		p.rect(0, 0, 20, 40);
 		p.ellipse(0, -20 , 40, 40);
-		p.popMatrix();
-		
+		p.popMatrix();	
 	}
+	
+
 
 }

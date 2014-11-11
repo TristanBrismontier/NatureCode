@@ -13,7 +13,7 @@ import processing.core.PVector;
 
 public class MainBoxe2D extends PApplet {
 
-	final List<Body2D> boxes = new ArrayList<Body2D>();
+	final List<LinkParticule> boxes = new ArrayList<LinkParticule>();
 	Surface surface;
 	Box2DProcessing box2D;
 	
@@ -30,15 +30,15 @@ public class MainBoxe2D extends PApplet {
 		boxes.forEach(box -> box.display());
 		surface.display();
 		if(mousePressed){
-				boxes.add(new Icky(this, box2D, new PVector(mouseX, mouseY)));
+				boxes.add(new LinkParticule(this, new PVector(mouseX, mouseY), box2D));
 		}
 	}
 	
 	@Override
 	public void keyPressed() {
-		 Iterator<Body2D> it = boxes.iterator();
+		 Iterator<LinkParticule> it = boxes.iterator();
 		  while (it.hasNext()) {
-			  Body2D body = it.next();
+			  LinkParticule body = it.next();
 			  body.destroy();
 			  it.remove();
 		  }
