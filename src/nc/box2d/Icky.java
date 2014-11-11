@@ -16,13 +16,13 @@ public class Icky extends Body2D {
 		
 		PolygonShape ps = new PolygonShape();
 		float box2dW = box2d.scalarPixelsToWorld(10);
-		float box2dH = box2d.scalarPixelsToWorld(40);
+		float box2dH = box2d.scalarPixelsToWorld(20);
 		ps.setAsBox(box2dW, box2dH);
 		
 		CircleShape cs = new CircleShape();
-		cs.m_radius = box2d.scalarPixelsToWorld(40);
+		cs.m_radius = box2d.scalarPixelsToWorld(20);
 		
-		Vec2 offset = new Vec2(0,-45);
+		Vec2 offset = new Vec2(0,-20);
 		offset = box2d.vectorPixelsToWorld(offset);
 		cs.m_p.set(offset);
 		
@@ -40,8 +40,8 @@ public class Icky extends Body2D {
 		p.translate(pos.x, pos.y);
 		p.rotate(a);
 		p.fill(175);
-		p.rect(0, 0, 20, 80);
-		p.ellipse(0, -45 , 80, 80);
+		p.rect(0, 0, 20, 40);
+		p.ellipse(0, -20 , 40, 40);
 		p.popMatrix();
 		
 	}
