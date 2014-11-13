@@ -27,7 +27,7 @@ public class MainBoxe2D extends PApplet {
 	}
 
 	public void draw() {
-		background(255);
+		background(0);
 		box2D.step();
 		chainCell.display();
 		boxes.forEach(box -> box.display());

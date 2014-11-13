@@ -37,7 +37,7 @@ public class ChainCell {
 				djd.bodyB = lastCell.body;
 				djd.length = box2d.scalarPixelsToWorld(1);
 
-				djd.frequencyHz =10f;
+				djd.frequencyHz =13f;
 				djd.dampingRatio = 0f;
 				DistanceJoint dj = (DistanceJoint) box2d.world.createJoint(djd);
 			}
@@ -52,7 +52,7 @@ public class ChainCell {
 		djd.bodyB = lastCell.body;
 		djd.length = box2d.scalarPixelsToWorld(1);
 
-		djd.frequencyHz = 10f;
+		djd.frequencyHz = 13f;
 		djd.dampingRatio = 0f;
 		DistanceJoint dj = (DistanceJoint) box2d.world.createJoint(djd);
 		cells.add(c);

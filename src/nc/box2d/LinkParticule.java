@@ -37,7 +37,7 @@ public class LinkParticule {
 	void display(){
 		Vec2 pos1 = box2d.getBodyPixelCoord(c1.body);
 	    Vec2 pos2 = box2d.getBodyPixelCoord(c2.body);
-	    p.stroke(0);
+	    p.stroke(255);
 	    p.line(pos1.x,pos1.y,pos2.x,pos2.y);
 	 
 	    c1.display();

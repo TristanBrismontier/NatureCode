@@ -37,9 +37,9 @@ public class Cell extends Body2D {
 	
 		p.translate(pos.x, pos.y);
 		p.rotate(-a);
-		p.fill(gray);
+		p.fill(100);
 		p.strokeWeight(2);
-		p.stroke(0);
+		p.stroke(255);
 		p.ellipse(0, 0, whith, whith);
 		p.line(0, 0, whith/2, 0);
 		p.popMatrix();
