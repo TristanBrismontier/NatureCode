@@ -3,6 +3,7 @@ package nc.box2d;
 import nc.box2d.shiffman.box2d.Box2DProcessing;
 
 import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.joints.DistanceJoint;
 import org.jbox2d.dynamics.joints.DistanceJointDef;
 
@@ -19,8 +20,8 @@ public class LinkParticule {
 		this.p = p;
 		this.box2d = box2d;
 		
-		c1 = new Cell(p,box2d,new PVector(location.x-40,location.y));
-		c2 = new Cell(p,box2d,new PVector(location.x+40,location.y));
+		c1 = new Cell(p,box2d,new PVector(location.x-40,location.y),  p.random(50), BodyType.DYNAMIC, true);
+		c2 = new Cell(p,box2d,new PVector(location.x+40,location.y), p.random(50), BodyType.DYNAMIC, true);
 		DistanceJointDef djd = new DistanceJointDef();
 		
 		djd.bodyA = c1.body;

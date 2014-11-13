@@ -53,14 +53,18 @@ public class Body2D {
 		body.createFixture(fd);
 	}
 	
-	public Body2D(PApplet p, Box2DProcessing box2d, PVector location, boolean otherShape) {
+	public Body2D(PApplet p, Box2DProcessing box2d, PVector location, boolean otherShape){
+		this(p, box2d, location, p.random(50), otherShape, BodyType.DYNAMIC);
+	}
+	
+	public Body2D(PApplet p, Box2DProcessing box2d, PVector location,float width, boolean otherShape, BodyType type) {
 		this.p = p;
 		this.box2d = box2d;
 		this.gray = 175;
-		this.whith = p.random(50);
+		this.whith = width;
 		
 		BodyDef bd = new BodyDef();
-		bd.type = BodyType.DYNAMIC;
+		bd.type = type;
 	
 		bd.position.set(box2d.coordPixelsToWorld(location.x,location.y));
 		body = box2d.createBody(bd);

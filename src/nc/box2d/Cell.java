@@ -4,6 +4,7 @@ import nc.box2d.shiffman.box2d.Box2DProcessing;
 
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 
 import processing.core.PApplet;
@@ -11,8 +12,8 @@ import processing.core.PVector;
 
 public class Cell extends Body2D {
 
-	public Cell(PApplet p, Box2DProcessing box2d, PVector location) {
-			super(p, box2d, location,true);
+	public Cell(PApplet p, Box2DProcessing box2d, PVector location, float r, BodyType type, boolean density) {
+			super(p, box2d, location,r,true, type);
 		
 			CircleShape ps = new CircleShape();
 			float box2dW = box2d.scalarPixelsToWorld(whith/2);
@@ -21,7 +22,7 @@ public class Cell extends Body2D {
 			
 			FixtureDef fd = new FixtureDef();
 			fd.shape = ps;
-			fd.density = 1;
+			fd.density = 0;
 			fd.friction = 0.3f;
 			fd.restitution = 0.5f;
 			body.createFixture(fd);
