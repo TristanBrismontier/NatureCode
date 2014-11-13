@@ -22,7 +22,6 @@ public class Cell extends Body2D {
 			
 			FixtureDef fd = new FixtureDef();
 			fd.shape = ps;
-			System.out.println(density);
 			fd.density = (density)?1:0;
 			fd.friction = 0.3f;
 			fd.restitution = 0.5f;
