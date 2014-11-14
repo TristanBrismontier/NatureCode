@@ -16,20 +16,20 @@ public class MainBoxe2D extends PApplet {
 	final List<LinkParticule> boxes = new ArrayList<LinkParticule>();
 	
 	Box2DProcessing box2D;
-	ChainCell chainCell;
+	Widmill widmill;
+	
 	
 	public void setup() {
 		size(800,800);
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld();
-		chainCell = new ChainCell(this, box2D,300);
-		
+		widmill = new Widmill(this, box2D, width/2, 600);
 	}
 
 	public void draw() {
 		background(0);
 		box2D.step();
-		chainCell.display();
+		widmill.display();
 		boxes.forEach(box -> box.display());
 		if(mousePressed){
 				boxes.add(new LinkParticule(this, new PVector(mouseX, mouseY), box2D));

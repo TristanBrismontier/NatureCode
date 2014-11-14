@@ -1,5 +1,6 @@
 package nc.box2d;
 
+import javafx.scene.shape.Box;
 import nc.box2d.shiffman.box2d.Box2DProcessing;
 
 import org.jbox2d.collision.shapes.PolygonShape;
@@ -34,7 +35,7 @@ public class Body2D {
 		
 		BodyDef bd = new BodyDef();
 		bd.type = type;
-	
+		
 		bd.position.set(box2d.coordPixelsToWorld(location.x,location.y));
 		body = box2d.createBody(bd);
 		
@@ -79,8 +80,8 @@ public class Body2D {
 	
 		p.translate(pos.x, pos.y);
 		p.rotate(-a);
-		p.fill(gray);
-		p.stroke(0);
+		p.fill(175);
+		p.stroke(255);
 		p.rectMode(p.CENTER);
 		p.rect(0, 0, whith, height);
 		p.popMatrix();
