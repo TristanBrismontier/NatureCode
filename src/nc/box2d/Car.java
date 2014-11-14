@@ -1,25 +1,27 @@
 package nc.box2d;
 
+import nc.box2d.shiffman.box2d.Box2DProcessing;
+
 import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.joints.RevoluteJoint;
 import org.jbox2d.dynamics.joints.RevoluteJointDef;
 
-import nc.box2d.shiffman.box2d.Box2DProcessing;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Widmill {
+public class Car {
 	PApplet p;
 	Box2DProcessing box2d;
-	Body2D box1;
-	Body2D box2;
+	Cell wheel1;
+	Cell wheel2;
+	Body2D box;
 	RevoluteJoint joint;
 		
-	public Widmill(PApplet p, Box2DProcessing box2d, float x, float y) {
+	public Car(PApplet p, Box2DProcessing box2d, float x, float y) {
 		this.p = p;
 		this.box2d = box2d;
-		box1 = new Body2D(p, box2d, new PVector(x, y-20), 120, 10 , BodyType.DYNAMIC);
-		box2 = new Body2D(p, box2d, new PVector(x, y), 10, 40 , BodyType.STATIC);
+		box1 = new Cell(p, box2d, new PVector(x, y-20), 120, 10 ,true, BodyType.DYNAMIC);
+		box2 = new Cell(p, box2d, new PVector(x, y), 10, 40 , BodyType.STATIC);
 		
 		RevoluteJointDef rjd = new RevoluteJointDef();
 		
@@ -42,6 +44,4 @@ public class Widmill {
 		box1.display();
 		box2.display();
 	}
-	
-
 }

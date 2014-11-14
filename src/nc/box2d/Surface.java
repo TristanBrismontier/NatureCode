@@ -23,7 +23,7 @@ public class Surface {
 		
 		for (int i = 0; i < p.width; i++) {
 			
-			surface.add(new Vec2(i,p.noise((float)i/50)*100+p.height/2+p.cos((float)i/(p.width/16))*200)); 
+			surface.add(new Vec2(i,p.noise((float)i/50)*100+p.height/2+p.cos((float)i/(p.width/16))*20)); 
 		}
 		
 		ChainShape chain = new ChainShape();
@@ -41,7 +41,7 @@ public class Surface {
 	
 	public void display() {
 		p.strokeWeight(1);
-		p.stroke(0);
+		p.stroke(255);
 		p.noFill();
 		p.beginShape();
 		surface.forEach(v -> p.vertex(v.x, v.y));
