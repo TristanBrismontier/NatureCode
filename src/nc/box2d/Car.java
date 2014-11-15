@@ -22,6 +22,7 @@ public class Car {
 		this.box2d = box2d;
 		box1 = new Cell(p, box2d, new PVector(x, y-20), 120, 10 ,true, BodyType.DYNAMIC);
 		box2 = new Cell(p, box2d, new PVector(x, y), 10, 40 , BodyType.STATIC);
+		box2 = new Cell(p, box2d, new PVector(x, y), 10, 40 , BodyType.DYNAMIC);
 		
 		RevoluteJointDef rjd = new RevoluteJointDef();
 		
