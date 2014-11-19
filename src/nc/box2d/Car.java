@@ -21,7 +21,7 @@ public class Car {
 	public Car(PApplet p, Box2DProcessing box2d, float x, float y) {
 		this.p = p;
 		this.box2d = box2d;
-		box = new Body2D(p, box2d, new PVector(x, y), 120, 25 , BodyType.DYNAMIC);
+		box = new Body2D(p, box2d, new PVector(x, y), 120, 25 , BodyType.KINEMATIC);
 		wheel1 = new Cell(p, box2d, new PVector(x-50, y+25), 20, BodyType.DYNAMIC,true);
 		wheel2= new Cell(p, box2d, new PVector(x+50, y+25), 20, BodyType.DYNAMIC,true);
 		

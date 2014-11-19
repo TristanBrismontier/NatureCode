@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.BodyType;
 
 import nc.box2d.shiffman.box2d.Box2DProcessing;
 import nc.particle.Particle;
@@ -17,8 +18,7 @@ public class MainBoxe2D extends PApplet {
 	
 	Box2DProcessing box2D;
 	Surface surface;
-	Car car;
-	Spring spring;
+	Cell cell;
 	
 	
 	public void setup() {
@@ -26,18 +26,19 @@ public class MainBoxe2D extends PApplet {
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld();
 		surface = new Surface(this, box2D);
-		car = new Car(this, box2D, 200, 350);
-		spring = new Spring(this, box2D);
+		cell = new Cell(this, box2D, new PVector(200,200),20, BodyType.KINEMATIC, true);
 		
 	}
 
 	public void draw() {
-		spring.update(mouseX, mouseY);
-		spring.display();
 		background(0);
+		Vec2 pos = cell.body.getWorldCenter();
+		Vec2 target = box2D.coordPixelsToWorld(mouseX, mouseY);
+		Vec2 v = target.sub(pos);
+		cell.body.setLinearVelocity(v);
 		box2D.step();
 		surface.display();
-		car.display();
+		cell.display();
 		boxes.forEach(box -> box.display());
 //		if(mousePressed){
 //				boxes.add(new LinkParticule(this, new PVector(mouseX, mouseY), box2D));
@@ -46,17 +47,14 @@ public class MainBoxe2D extends PApplet {
 	
 	@Override
 	public void mousePressed() {
-		spring.bind(mouseX, mouseY, car.getBodyCar());
 	}
 	
 	@Override
 	public void mouseReleased() {
-	spring.destroy();
 	}
 	@Override
 	public void keyPressed() {
-		car = new Car(this, box2D, 200, 350);
-		spring = new Spring(this, box2D);
+		cell = new Cell(this, box2D, new PVector(200,200),20, BodyType.KINEMATIC, true);
 		
 		 Iterator<LinkParticule> it = boxes.iterator();
 		  while (it.hasNext()) {
