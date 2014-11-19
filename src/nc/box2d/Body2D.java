@@ -11,6 +11,7 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public class Body2D {
@@ -22,6 +23,9 @@ public class Body2D {
 	protected float whith;
 	protected float height;
 	
+	PImage img;
+	
+	
 	public Body2D(PApplet p, Box2DProcessing box2d, PVector location) {
 		this(p,box2d,location,p.random(50),p.random(50),BodyType.DYNAMIC);
 	}
@@ -32,7 +36,7 @@ public class Body2D {
 		this.gray = 175;
 		this.whith = whith;
 		this.height = height;
-		
+		img = p.loadImage( "finn.png");
 		BodyDef bd = new BodyDef();
 		bd.type = type;
 		
@@ -84,6 +88,7 @@ public class Body2D {
 		p.stroke(255);
 		p.rectMode(p.CENTER);
 		p.rect(0, 0, whith, height);
+		p.image(img, 0, -(img.height+10));
 		p.popMatrix();
 		
 	}

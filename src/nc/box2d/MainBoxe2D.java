@@ -17,6 +17,8 @@ public class MainBoxe2D extends PApplet {
 	
 	Box2DProcessing box2D;
 	Surface surface;
+	Car car;
+	Spring spring;
 	
 	
 	public void setup() {
@@ -24,20 +26,38 @@ public class MainBoxe2D extends PApplet {
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld();
 		surface = new Surface(this, box2D);
+		car = new Car(this, box2D, 200, 350);
+		spring = new Spring(this, box2D);
+		
 	}
 
 	public void draw() {
+		spring.update(mouseX, mouseY);
+		spring.display();
 		background(0);
 		box2D.step();
 		surface.display();
+		car.display();
 		boxes.forEach(box -> box.display());
-		if(mousePressed){
-				boxes.add(new LinkParticule(this, new PVector(mouseX, mouseY), box2D));
-		}
+//		if(mousePressed){
+//				boxes.add(new LinkParticule(this, new PVector(mouseX, mouseY), box2D));
+//		}
 	}
 	
 	@Override
+	public void mousePressed() {
+		spring.bind(mouseX, mouseY, car.getBodyCar());
+	}
+	
+	@Override
+	public void mouseReleased() {
+	spring.destroy();
+	}
+	@Override
 	public void keyPressed() {
+		car = new Car(this, box2D, 200, 350);
+		spring = new Spring(this, box2D);
+		
 		 Iterator<LinkParticule> it = boxes.iterator();
 		  while (it.hasNext()) {
 			  LinkParticule body = it.next();
