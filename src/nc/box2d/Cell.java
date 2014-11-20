@@ -1,5 +1,7 @@
 package nc.box2d;
 
+import java.awt.Color;
+
 import nc.box2d.shiffman.box2d.Box2DProcessing;
 
 import org.jbox2d.collision.shapes.CircleShape;
@@ -11,10 +13,12 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 public class Cell extends Body2D {
+	Color color;
 
 	public Cell(PApplet p, Box2DProcessing box2d, PVector location, float r, BodyType type, boolean density) {
 			super(p, box2d, location,r,true, type);
 		
+			color = new Color(100, 100, 100);
 			CircleShape ps = new CircleShape();
 			float box2dW = box2d.scalarPixelsToWorld(whith/2);
 			
@@ -26,6 +30,7 @@ public class Cell extends Body2D {
 			fd.friction = 0.3f;
 			fd.restitution = 0.5f;
 			body.createFixture(fd);
+			body.setUserData(this);
 	}
 
 	@Override
@@ -37,7 +42,7 @@ public class Cell extends Body2D {
 	
 		p.translate(pos.x, pos.y);
 		p.rotate(-a);
-		p.fill(100);
+		p.fill(color.getRed(),color.getGreen(),color.getBlue());
 		p.strokeWeight(2);
 		p.stroke(255);
 		p.ellipse(0, 0, whith, whith);

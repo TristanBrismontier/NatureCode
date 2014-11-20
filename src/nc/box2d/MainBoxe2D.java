@@ -26,6 +26,7 @@ public class MainBoxe2D extends PApplet {
 		size(800,800);
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld(new Vec2(0.0f, 0.0f));
+		box2D.listenForCollisions();
 		border = new Border(this, box2D);
 		cell = new Cell(this, box2D, new PVector(width/2,height/2),80, BodyType.DYNAMIC, true);
 		boxes.add(cell);
@@ -51,6 +52,7 @@ public class MainBoxe2D extends PApplet {
 	@Override
 	public void mousePressed() {
 	}
+	
 	
 	@Override
 	public void mouseReleased() {
