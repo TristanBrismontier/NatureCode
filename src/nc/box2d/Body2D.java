@@ -62,6 +62,23 @@ public class Body2D {
 		this(p, box2d, location, p.random(50), otherShape, BodyType.DYNAMIC);
 	}
 	
+	public void applyForce(Vec2 force){
+		Vec2 pos = body.getWorldCenter();
+		body.applyForce(force, pos);
+	}
+	
+	public Vec2 attract(Body2D b2D){
+		Vec2 pos = body.getWorldCenter();
+		Vec2 moverPos = b2D.body.getWorldCenter();
+		Vec2 force = pos.sub(moverPos);
+		float distance = force.length();
+		distance = p.constrain(distance, 1, 5);
+		force.normalize();
+		float strenght = ( 0.81f*1*b2D.body.m_mass);
+		force.mulLocal(strenght);
+		return force;
+	}
+	
 	public Body2D(PApplet p, Box2DProcessing box2d, PVector location,float width, boolean otherShape, BodyType type) {
 		this.p = p;
 		this.box2d = box2d;
