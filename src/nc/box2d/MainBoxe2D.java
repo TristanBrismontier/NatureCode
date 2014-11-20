@@ -27,8 +27,8 @@ public class MainBoxe2D extends PApplet {
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld(new Vec2(0.0f, 0.0f));
 		border = new Border(this, box2D);
-		cell = new Cell(this, box2D, new PVector(200,200),20, BodyType.KINEMATIC, true);
-		
+		cell = new Cell(this, box2D, new PVector(width/2,height/2),80, BodyType.DYNAMIC, true);
+		boxes.add(cell);
 	}
 
 	public void draw() {
@@ -39,7 +39,6 @@ public class MainBoxe2D extends PApplet {
 		cell.body.setLinearVelocity(v);
 		box2D.step();
 		border.display();
-		cell.display();
 		for (Cell box : boxes) {
 			boxes.forEach(b -> box.applyForce(b.attract(box)));
 			box.display();
