@@ -18,7 +18,7 @@ public class Cell extends Body2D {
 	public Cell(PApplet p, Box2DProcessing box2d, PVector location, float r, BodyType type, boolean density) {
 			super(p, box2d, location,r,true, type);
 		
-			color = new Color(100, 100, 100);
+			color = new Color((int)p.random(255), (int)p.random(255),(int)p.random(255));
 			CircleShape ps = new CircleShape();
 			float box2dW = box2d.scalarPixelsToWorld(whith/2);
 			
@@ -50,8 +50,25 @@ public class Cell extends Body2D {
 		p.popMatrix();
 	}
 	
-	public void contact(){
-		color = Color.RED;
+	public void setColor(Color c) {
+		this.color= new Color(c.getRed(), c.getGreen(), c.getBlue());
+	}
+	public void contact(Cell c){
+		int r = (color.getRGB() >> 16) & 0x000000ff;
+		int g = (color.getRGB() >> 8) & 0x000000ff;
+		int b = color.getRGB() & 0x000000ff;
+
+		r += (c.color.getRGB() >> 16) & 0x000000ff;
+		g += (c.color.getRGB() >> 8) & 0x000000ff;
+		b += c.color.getRGB() & 0x000000ff;
+
+		int average = ((r/2)<<16)+((g/2)<<8)+(b/2);
+
+		int rn = (average >> 16) & 0x000000ff;
+		int gn = (average >> 8) & 0x000000ff;
+		int bn = average & 0x000000ff;
+		color = new Color(rn, gn, bn);
+		c.setColor(color);
 	}
 	
 }
