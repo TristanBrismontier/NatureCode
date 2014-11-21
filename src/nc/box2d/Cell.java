@@ -50,4 +50,8 @@ public class Cell extends Body2D {
 		p.popMatrix();
 	}
 	
+	public void contact(){
+		color = Color.RED;
+	}
+	
 }
