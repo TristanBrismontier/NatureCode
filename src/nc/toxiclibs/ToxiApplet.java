@@ -14,6 +14,7 @@ public class ToxiApplet extends PApplet {
 	VerletPhysics2D physics;
 	Particle p1;
 	Particle p2;
+	StringParticle string;
 	
 	public void setup() {
 		size(800,800);
@@ -23,11 +24,12 @@ public class ToxiApplet extends PApplet {
 		
 		p1 = new Particle(this, new Vec2D(width/2,100));
 		p2 = new Particle(this, new Vec2D(width/2-100,height/2));
-		VerletSpring2D spring = new VerletSpring2D(p1, p2, 80f,0.04f);
+		p2.setSize(30);
 		physics.addParticle(p1);
 		physics.addParticle(p2);
-		physics.addSpring(spring);
 		p1.lock();
+		
+		string = new StringParticle(this, physics, p1, p2);
 	}
 	
 	public void draw() {
@@ -35,6 +37,7 @@ public class ToxiApplet extends PApplet {
 		background(0);
 		p1.display();		
 		p2.display();
+		string.display();
 		if(mousePressed){
 			p2.lock();
 			p2.x = mouseX;
