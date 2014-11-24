@@ -21,12 +21,13 @@ public class ToxiApplet extends PApplet {
 		physics.setWorldBounds(new Rect(0,0,width,height));
 		physics.addBehavior(new GravityBehavior(new Vec2D(0,0.5f)));
 		
-		p1 = new Particle(this, new Vec2D(width/2,height/2-100));
+		p1 = new Particle(this, new Vec2D(width/2,100));
 		p2 = new Particle(this, new Vec2D(width/2-100,height/2));
 		VerletSpring2D spring = new VerletSpring2D(p1, p2, 80f,0.04f);
 		physics.addParticle(p1);
 		physics.addParticle(p2);
 		physics.addSpring(spring);
+		p1.lock();
 	}
 	
 	public void draw() {
