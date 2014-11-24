@@ -25,5 +25,7 @@
 	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-windows-i586.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tristan/Workspace/guava-18.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tristan/Workspace/NatureCode/jbox2d-library-2.2.1-ds.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Processing/toxiclibs/verletphysics/library/verletphysics.jar" sourcepath="C:/Users/Tristan/Processing/toxiclibs/verletphysics/library/verletphysics.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Processing/toxiclibs/toxiclibscore/library/toxiclibscore.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
