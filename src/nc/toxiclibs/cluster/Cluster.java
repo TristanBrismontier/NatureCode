@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import toxi.geom.Vec2D;
 import toxi.physics2d.VerletPhysics2D;
 import toxi.physics2d.VerletSpring2D;
@@ -12,10 +13,6 @@ public class Cluster {
 	PApplet p; 
 	List<Node> nodes;
 	Node firstNode;
-	Node star;
-	Node rY;
-	Node lY;
-	Node mouth;
 	
 	
 	static final float elas = 0.0001f;
@@ -26,6 +23,7 @@ public class Cluster {
 		firstNode = new Node(p, center);
 		firstNode.lock();
 		nodes.add(firstNode);
+		firstNode.setPartOfShape(false);
 		physics.addParticle(firstNode);
 				
 	}
@@ -61,7 +59,7 @@ public class Cluster {
 	
 	public void display(){
 		p.noStroke();
-		p.fill(205,147,249,100);
+		p.fill(188,157,202);
 		p.beginShape();
 	
 		for (Node n : nodes) {
@@ -70,6 +68,19 @@ public class Cluster {
 			}
 		}
 		p.endShape();
+		
+		for (Node node : nodes) {
+			if(node instanceof Sprite){
+				Sprite s = (Sprite)node;
+				PImage img = s.getSprite();
+				p.pushMatrix();
+				p.translate(s.x, s.y);
+			
+				p.imageMode(p.CENTER);
+				p.image(img, 0, 0);
+				p.popMatrix();
+			}
+		}
 //		List<Node> notalreadyLink = new ArrayList<Node>(nodes);
 //		for (Node node : nodes) {
 //			notalreadyLink.remove(node);
@@ -87,6 +98,14 @@ public class Cluster {
 		firstNode.x = mouseX;
 		firstNode.y = mouseY;
 		firstNode.unlock();
+	}
+
+	public void addSprite(int i, int j, String spriteName, VerletPhysics2D physics) {
+		Sprite sprite = new Sprite(p, new Vec2D(i,j),spriteName);
+		sprite.setPartOfShape(false);
+		sprite.lock();
+		physics.addParticle(sprite);
+		nodes.add(sprite);
 	}
 		
 }

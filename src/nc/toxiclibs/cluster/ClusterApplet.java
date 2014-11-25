@@ -12,13 +12,13 @@ public class ClusterApplet  extends PApplet {
 	VerletPhysics2D physics;
 	Cluster cluster;
 	boolean build;
-	PImage princess;
+
 	
 	public void setup() {
 		size(800,800);
-		princess = loadImage("lumpy-space-adventure-time-10.png");
+	
 		physics = new VerletPhysics2D();
-		physics.setWorldBounds(new Rect(0,0,width,height));
+		physics.setWorldBounds(new Rect(200,200,width/2,height/2));
 		physics.addBehavior(new GravityBehavior(new Vec2D(0,0.5f)));
 		cluster = new Cluster(this, physics, new Vec2D(width/2,height/2));
 		createPrincess();
@@ -28,7 +28,7 @@ public class ClusterApplet  extends PApplet {
 	
 	public void draw() {
 		background(0);
-		image(princess,width/2-105,height/2-100);
+		
 		if(build){
 			
 			physics.update();
@@ -39,12 +39,7 @@ public class ClusterApplet  extends PApplet {
 		}
 	}
 	
-	@Override
-	public void mouseClicked() {
-		System.out.println(mouseX + "," + mouseY);
-		cluster.addNewNode(mouseX, mouseY, physics);
-	}
-	
+
 	@Override
 	public void keyPressed() {
 		build = true;
@@ -129,6 +124,11 @@ public class ClusterApplet  extends PApplet {
 		cluster.addNewNode(462,470, physics);
 		cluster.addNewNode(454,473, physics);
 		cluster.addNewNode(450,473, physics);
-		cluster.addNewNode(446,469, physics);		
+		cluster.addNewNode(446,469, physics);	
+		
+		cluster.addSprite(393,326,"star.png", physics);
+		cluster.addSprite(423,357,"rY.png", physics);
+		cluster.addSprite(376,361,"lY.png", physics);
+		cluster.addSprite(407,372,"mouth.png", physics);
 	}
 }
