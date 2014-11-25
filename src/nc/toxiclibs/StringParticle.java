@@ -28,13 +28,13 @@ public class StringParticle {
 		for (int i = 0; i < 20; i++) {
 			y +=5;
 			Particle nextParticle = new Particle(p,new Vec2D(xAli, y));
-			final VerletSpring2D spring = new VerletSpring2D(previous, nextParticle, 5, 1f);
+			final VerletSpring2D spring = new VerletSpring2D(previous, nextParticle, 5, 0.5f);
 			physics.addParticle(nextParticle);
 			stringElments.add(nextParticle);
 			physics.addSpring(spring);
 			previous = nextParticle;			
 		}
-		final VerletSpring2D spring = new VerletSpring2D(previous, endParticle, 5, 1f);
+		final VerletSpring2D spring = new VerletSpring2D(previous, endParticle, 5, 0.5f);
 		physics.addSpring(spring);
 	}
 
