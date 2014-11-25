@@ -11,53 +11,82 @@ import toxi.physics2d.VerletSpring2D;
 public class Cluster {
 	PApplet p; 
 	List<Node> nodes;
+	Node firstNode;
+	Node star;
+	Node rY;
+	Node lY;
+	Node mouth;
 	
-	static final float elas = 0.01f;
 	
-	public Cluster(PApplet p, VerletPhysics2D physics,Vec2D center,float num,float diameter) {
+	static final float elas = 0.0001f;
+	
+	public Cluster(PApplet p, VerletPhysics2D physics,Vec2D center) {
 		this.p = p;
 		nodes = new ArrayList<Node>();
-		for (int i = 0; i < num; i++) {
-			Node node = new Node(p, center.add(Vec2D.randomVector()));
-			nodes.add(node);
-			physics.addParticle(node);
+		firstNode = new Node(p, center);
+		firstNode.lock();
+		nodes.add(firstNode);
+		physics.addParticle(firstNode);
+				
+	}
+
+	public void linkAll(VerletPhysics2D physics) {
+		for (Node node : nodes) {
+			System.out.println(node.x+","+node.y);
+			node.unlock();
 		}
-		
 		List<Node> notalreadyLink = new ArrayList<Node>(nodes);
 		for (Node node : nodes) {
 			notalreadyLink.remove(node);
+			float elass = (node.equals(firstNode))?0.02f:elas;
 			if(!notalreadyLink.isEmpty()){
 				for (Node nodeToLink : notalreadyLink) {
-					VerletSpring2D spring = new VerletSpring2D(node, nodeToLink, diameter,elas);
+					float diameter = node.distanceTo(nodeToLink);
+					VerletSpring2D spring = new VerletSpring2D(node, nodeToLink, diameter,elass);
 					physics.addSpring(spring);
 				}
 			}
 		}		
 	}
 	
+	
+	public void addNewNode(int mouseX, int mouseY, VerletPhysics2D physics) {
+		Node node = new Node(p, new Vec2D(mouseX,mouseY));
+		node.lock();
+		physics.addParticle(node);
+		nodes.add(node);
+	}
+	
+	
+	
 	public void display(){
-		p.fill(205,147,249);
+		p.noStroke();
+		p.fill(205,147,249,100);
 		p.beginShape();
-		nodes.forEach(n -> p.vertex(n.x,n.y));
-		p.endShape();
-		List<Node> notalreadyLink = new ArrayList<Node>(nodes);
-		for (Node node : nodes) {
-			notalreadyLink.remove(node);
-			if(!notalreadyLink.isEmpty()){
-				for (Node nodeToLink : notalreadyLink) {
-					p.stroke(255);
-					p.line(node.x, node.y, nodeToLink.x, nodeToLink.y);
-				}
+	
+		for (Node n : nodes) {
+			if(n.isPartOfShape()){
+				p.vertex(n.x,n.y);
 			}
 		}
+		p.endShape();
+//		List<Node> notalreadyLink = new ArrayList<Node>(nodes);
+//		for (Node node : nodes) {
+//			notalreadyLink.remove(node);
+//			if(!notalreadyLink.isEmpty()){
+//				for (Node nodeToLink : notalreadyLink) {
+//					p.stroke(255);
+//					p.line(node.x, node.y, nodeToLink.x, nodeToLink.y);
+//				}
+//			}
+//		}
 	}
 
 	public void setPos(int mouseX, int mouseY) {
-		Node node = nodes.get(0);
-		node.lock();
-		node.x = mouseX;
-		node.y = mouseY;
-		node.unlock();
+		firstNode.lock();
+		firstNode.x = mouseX;
+		firstNode.y = mouseY;
+		firstNode.unlock();
 	}
 		
 }
