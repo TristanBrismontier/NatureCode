@@ -9,7 +9,7 @@ import toxi.physics2d.behaviors.GravityBehavior;
 
 public class ClusterApplet  extends PApplet {
 
-	VerletPhysics2D physics;
+	final VerletPhysics2D physics;
 	Cluster cluster;
 	boolean build;
 
