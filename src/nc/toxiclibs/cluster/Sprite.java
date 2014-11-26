@@ -6,12 +6,12 @@ import toxi.geom.Vec2D;
 
 public class Sprite extends Node {
 	
-	PImage sprite;
+	final PImage sprite;
 
-	public Sprite(PApplet p, Vec2D arg0, String spriteName) {
+	public Sprite(final PApplet p,final Vec2D arg0,final String spriteName) {
 		super(p, arg0);
 		partOfShape = false;
-		sprite = p.loadImage(spriteName);
+		this.sprite = p.loadImage(spriteName);
 	}
 
 	public PImage getSprite() {
