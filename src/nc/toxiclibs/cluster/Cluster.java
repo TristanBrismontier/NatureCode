@@ -10,14 +10,14 @@ import toxi.physics2d.VerletPhysics2D;
 import toxi.physics2d.VerletSpring2D;
 
 public class Cluster {
-	PApplet p; 
+	final PApplet p; 
 	List<Node> nodes;
 	Node firstNode;
 	
 	
 	static final float elas = 0.0001f;
 	
-	public Cluster(PApplet p, VerletPhysics2D physics,Vec2D center) {
+	public Cluster(final PApplet p, VerletPhysics2D physics,Vec2D center) {
 		this.p = p;
 		nodes = new ArrayList<Node>();
 		firstNode = new Node(p, center);
