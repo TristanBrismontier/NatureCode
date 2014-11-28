@@ -14,6 +14,9 @@ public class Cluster {
 	List<Node> nodes;
 	Node firstNode;
 	
+	Node hightNode;
+	Node lowNode;
+	
 	
 	static final float elas = 0.0001f;
 	
@@ -50,6 +53,8 @@ public class Cluster {
 	
 	public void addNewNode(int mouseX, int mouseY, VerletPhysics2D physics) {
 		Node node = new Node(p, new Vec2D(mouseX,mouseY));
+		checkHight(node);
+		checkLow(node);
 		node.lock();
 		physics.addParticle(node);
 		nodes.add(node);
@@ -57,6 +62,27 @@ public class Cluster {
 	
 	
 	
+	private void checkLow(Node node) {
+		if(lowNode == null){
+			lowNode = node;
+		}else{
+			if(lowNode.y<node.y){
+				lowNode = node;
+				
+			}
+		}
+	}
+
+	private void checkHight(Node node) {
+		if(hightNode == null){
+			hightNode = node;
+		}else{
+			if(hightNode.y>node.y){
+				hightNode = node;
+			}
+		}
+	}
+
 	public void display(){
 		p.noStroke();
 		p.fill(188,157,202);
@@ -75,11 +101,16 @@ public class Cluster {
 				PImage img = s.getSprite();
 				p.pushMatrix();
 				p.translate(s.x, s.y);
+				p.rotate(p.atan2(hightNode.y-lowNode.y, hightNode.x-lowNode.x)+p.PI/2);
 			
 				p.imageMode(p.CENTER);
 				p.image(img, 0, 0);
 				p.popMatrix();
 			}
+		}
+		if(hightNode!=null){
+			System.out.println(hightNode.y + " | " + lowNode.y);
+			System.out.println(p.atan2(hightNode.y-lowNode.y, hightNode.x-lowNode.x));
 		}
 //		List<Node> notalreadyLink = new ArrayList<Node>(nodes);
 //		for (Node node : nodes) {
