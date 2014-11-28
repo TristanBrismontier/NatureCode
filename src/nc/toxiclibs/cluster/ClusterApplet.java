@@ -9,7 +9,7 @@ import toxi.physics2d.behaviors.GravityBehavior;
 
 public class ClusterApplet  extends PApplet {
 
-	final VerletPhysics2D physics;
+	VerletPhysics2D physics;
 	Cluster cluster;
 	boolean build;
 
@@ -18,7 +18,7 @@ public class ClusterApplet  extends PApplet {
 		size(800,800);
 	
 		physics = new VerletPhysics2D();
-		physics.setWorldBounds(new Rect(200,200,width/2,height/2));
+		physics.setWorldBounds(new Rect(0,0,width,height));
 		physics.addBehavior(new GravityBehavior(new Vec2D(0,0.5f)));
 		cluster = new Cluster(this, physics, new Vec2D(width/2,height/2));
 		createPrincess();

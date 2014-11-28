@@ -108,20 +108,16 @@ public class Cluster {
 				p.popMatrix();
 			}
 		}
-		if(hightNode!=null){
-			System.out.println(hightNode.y + " | " + lowNode.y);
-			System.out.println(p.atan2(hightNode.y-lowNode.y, hightNode.x-lowNode.x));
+		List<Node> notalreadyLink = new ArrayList<Node>(nodes);
+		for (Node node : nodes) {
+			notalreadyLink.remove(node);
+			if(!notalreadyLink.isEmpty()){
+				for (Node nodeToLink : notalreadyLink) {
+					p.stroke(255,5);
+					p.line(node.x, node.y, nodeToLink.x, nodeToLink.y);
+				}
+			}
 		}
-//		List<Node> notalreadyLink = new ArrayList<Node>(nodes);
-//		for (Node node : nodes) {
-//			notalreadyLink.remove(node);
-//			if(!notalreadyLink.isEmpty()){
-//				for (Node nodeToLink : notalreadyLink) {
-//					p.stroke(255);
-//					p.line(node.x, node.y, nodeToLink.x, nodeToLink.y);
-//				}
-//			}
-//		}
 	}
 
 	public void setPos(int mouseX, int mouseY) {
