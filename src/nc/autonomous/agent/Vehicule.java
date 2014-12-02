@@ -56,8 +56,8 @@ public class Vehicule {
 	public void display() {
 		p.pushMatrix();
 		p.translate(location.x, location.y);
-		p.rotate(velocity.heading());
-		p.image(img, 0, -img.height/2);
+		p.rotate(p.abs(velocity.heading()));
+		p.image(img, -img.width/2, -img.height/2);
 		p.popMatrix();
 	}
 
