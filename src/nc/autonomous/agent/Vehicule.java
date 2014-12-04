@@ -51,13 +51,13 @@ public class Vehicule {
 		if(location.x >p.width){
 			location.x = 0;
 		}
-		if(location.y >p.width){
+		if(location.y >p.height){
 			location.y = 0;
 		}
 	}
 
 	void arrive() {
-		 wAngle += p.map(p.random(-10,10), -10, 10, -0.1f, 0.1f);
+		 wAngle += p.map(p.random(-10,10), -10, 10, -0.5f, 0.5f);
 		 	PVector target = PVector.add(wanderingPos, new PVector(p.cos(wAngle)*r, p.sin(wAngle)*r));
 		    PVector desired = PVector.sub(target,location);
 
