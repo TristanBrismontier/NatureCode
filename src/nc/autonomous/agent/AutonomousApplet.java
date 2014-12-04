@@ -15,18 +15,12 @@ public class AutonomousApplet extends PApplet {
 	
 	public void draw() {
 		background(0);
-		PVector target = new PVector(mouseX, mouseY);
-		
-		finn.arrive(target);
+				
+		finn.arrive();
 		finn.update();
 		finn.display();
 		
-		displayTarget(target);
-	}
-
-	private void displayTarget(PVector target) {
-		fill(175,50);
-		ellipse(target.x, target.y, 20, 20);
+		
 	}
 	
 }
