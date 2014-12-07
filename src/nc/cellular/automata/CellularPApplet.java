@@ -2,6 +2,7 @@ package nc.cellular.automata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import processing.core.PApplet;
 
@@ -13,11 +14,17 @@ public class CellularPApplet extends PApplet {
 	
 	public void setup() {
 		size(810, 800);
-		size = 5;
-		initCells();
+		size = 2;
+		initCells(false);
 	}
 
-	private void initCells() {
+	private void initCells(boolean randomRule) {
+		if(randomRule){
+			Random random = new Random();
+			for (int i = 0; i < ruleset.length; i++) {
+				ruleset[i] = random.nextBoolean();
+			}
+		}
 		cells = new ArrayList<>();
 		List<Boolean> first = new ArrayList<>();
 		for (int i = 0; i < width / size; i++) {
@@ -84,7 +91,7 @@ public class CellularPApplet extends PApplet {
 	
 	@Override
 	public void keyPressed() {
-		initCells();
+		initCells(true);
 	}
 	
 	
