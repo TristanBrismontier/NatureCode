@@ -9,13 +9,13 @@ import processing.core.PApplet;
 public class CellularPApplet extends PApplet {
 
 	
-	List<List<Boolean>> cells;
+	List<List<Cell>> cells;
 	int size;
 	
 	public void setup() {
-		size(810, 800);
-		size = 20;
-//		frameRate(2);
+		size(200, 200);
+		size = 5;
+		frameRate(5);
 		initCells();
 	}
 
@@ -27,10 +27,10 @@ public class CellularPApplet extends PApplet {
 	}
 
 	private void initCollumn() {
-		List<Boolean> first = new ArrayList<>();
+		List<Cell> first = new ArrayList<>();
 		Random ran = new Random();
 		for (int i = 0; i < width / size; i++) {
-			first.add(ran.nextBoolean());
+			first.add(new Cell(ran.nextBoolean(),0));
 		}
 		cells.add(first);
 	}
@@ -41,20 +41,26 @@ public class CellularPApplet extends PApplet {
 		}
 		System.out.println(frameCount);
 		for (int i = 0; i < cells.size(); i++) {
-			List<Boolean> currentCells = cells.get(i);
+			List<Cell> currentCells = cells.get(i);
 			for (int j = 0; j < currentCells.size(); j++) {
-				Boolean current = currentCells.get(j);
-				int liveNeightboor = computeLive(i,j);
-				if (current) {
+				Cell current = currentCells.get(j);
+				current.setLiveNeigbour(computeLive(i,j));
+				if (current.isALive()) {
 					fill(255);
 				} else {
 					fill(0);
 				}
 				noStroke();
 				rect(j * size, i * size, size, size);
-				currentCells.set(j, computeCell(current,liveNeightboor));
 			}
 		}
+		
+		for (List<Cell> cellss : cells) {
+			for (Cell cell : cellss) {
+				cell.setLive(computeCell(cell.isALive(), cell.liveNeigbour));
+			}
+		}
+		
 	}
 	
 
@@ -92,21 +98,21 @@ public class CellularPApplet extends PApplet {
 		return liveNeightboor;
 	}
 
-	private int computeLiveCell(int j, List<Boolean> currentCells, boolean computeCurrent) {
+	private int computeLiveCell(int j, List<Cell> currentCells, boolean computeCurrent) {
 		int liveNeightboor = 0;
 		if (j - 1 > 0) {
-			liveNeightboor += (currentCells.get(j - 1))?1:0;
+			liveNeightboor += (currentCells.get(j - 1).isALive())?1:0;
 		}else{
 			liveNeightboor +=5;
 		}
 		if (j + 1 < currentCells.size()) {
-			liveNeightboor += (currentCells.get(j + 1))?1:0;
+			liveNeightboor += (currentCells.get(j + 1).isALive())?1:0;
 		}else{
 			liveNeightboor +=5;
 		}
 		
 		if(computeCurrent){
-			liveNeightboor +=currentCells.get(j)?1:0;
+			liveNeightboor +=currentCells.get(j).isALive()?1:0;
 		}
 		return liveNeightboor;
 	}
