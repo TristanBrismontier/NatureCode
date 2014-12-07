@@ -13,8 +13,11 @@ public class CellularPApplet extends PApplet {
 	
 	public void setup() {
 		size(810, 800);
-
 		size = 5;
+		initCells();
+	}
+
+	private void initCells() {
 		cells = new ArrayList<>();
 		List<Boolean> first = new ArrayList<>();
 		for (int i = 0; i < width / size; i++) {
@@ -78,4 +81,11 @@ public class CellularPApplet extends PApplet {
 	    else if (!previous && !current && !next) return ruleset[7];
 	    return false;
 	}
+	
+	@Override
+	public void keyPressed() {
+		initCells();
+	}
+	
+	
 }
