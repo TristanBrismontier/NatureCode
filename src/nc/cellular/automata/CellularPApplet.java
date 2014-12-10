@@ -82,11 +82,9 @@ public class CellularPApplet extends PApplet {
 		} else {
 			if (liveNeightboor == 3) {
 				return true;
-			} else {
-				return false;
-			}
+			} 
 		}
-
+		return false;
 	}
 
 	private int computeLive(int i, int j) {
