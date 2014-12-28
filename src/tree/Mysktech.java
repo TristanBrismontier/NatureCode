@@ -5,13 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.UUID;
 
-import nc.particle.Particle;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-import com.google.common.collect.Iterables;
 
 
 public class Mysktech extends PApplet {
@@ -21,7 +18,8 @@ public class Mysktech extends PApplet {
 	float ratio = 5;
 	float rX;
 	float rY;
-	final int side = 800;
+	final int side = 1500;
+	
 	boolean compute = true;
 	Map<Float,List<PVectorWidth>> buleMap = new HashMap<Float, List<PVectorWidth>>();	
 	
@@ -41,7 +39,7 @@ public class Mysktech extends PApplet {
 					listbule.add(pVectorWidth);
 					buleMap.put(pVectorWidth.getId(), listbule);
 				}else{
-					PVectorWidth lastVector = Iterables.getLast(listbule);
+					PVectorWidth lastVector = listbule.get(listbule.size()-1);
 					if(abs(lastVector.dist(pVectorWidth))>=pVectorWidth.getWid()){
 						listbule.add(pVectorWidth);
 					}
@@ -56,7 +54,7 @@ public class Mysktech extends PApplet {
 		
 		ratio = (ratio>1)?ratio-0.005f:1;
 		p++;
-		background(0);
+		background(255);
 		noStroke();
 		spotLight(255, 0, 0, width/2, height/8, 400, 0, 0, -1, PI/2, 2);
 		translate(width/2, height+20, -200);
@@ -106,10 +104,4 @@ public class Mysktech extends PApplet {
 		stick = new Stick(this, new PVector(0, 0), 50,180);
 		background(255);
 	}
-	
-    public static void main(String args[])
-    {
-      PApplet.main(new String[] { Mysktech.class.getName() });
-    }
-
 }

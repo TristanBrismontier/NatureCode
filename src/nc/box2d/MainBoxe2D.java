@@ -24,7 +24,7 @@ public class MainBoxe2D extends PApplet {
 	Cell cell;
 
 	public void setup() {
-		size(300, 300);
+		size(2500, 1600);
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld(new Vec2(0.0f, 0.0f));
 		box2D.listenForCollisions();
@@ -36,10 +36,10 @@ public class MainBoxe2D extends PApplet {
 
 	public void draw() {
 		background(0);
-		Vec2 pos = cell.body.getWorldCenter();
-		Vec2 target = box2D.coordPixelsToWorld(mouseX, mouseY);
-		Vec2 v = target.sub(pos);
-		cell.body.setLinearVelocity(v);
+//		Vec2 pos = cell.body.getWorldCenter();
+//		Vec2 target = box2D.coordPixelsToWorld(mouseX, mouseY);
+//		Vec2 v = target.sub(pos);
+//		cell.body.setLinearVelocity(v);
 		box2D.step();
 		border.display();
 		for (Cell box : boxes) {
@@ -48,7 +48,7 @@ public class MainBoxe2D extends PApplet {
 		}
 		if (mousePressed) {
 			boxes.add(new Cell(this, box2D, new PVector(mouseX, mouseY),
-					random(10,30), BodyType.DYNAMIC, true));
+					random(10,40), BodyType.DYNAMIC, true));
 		}
 	}
 

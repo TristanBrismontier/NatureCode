@@ -2,30 +2,26 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="data"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre8"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/core.jar">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_25"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/core.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="file:/C:/Program%20Files/processing-2.2.1/build/javadoc/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Tristan/Workspace/proscene/library/proscene.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-linux-amd64.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-linux-armv6hf.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-linux-i586.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-macosx-universal.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-windows-amd64.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-windows-i586.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-linux-amd64.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-linux-armv6hf.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-linux-i586.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-macosx-universal.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-windows-amd64.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-windows-i586.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tristan/Workspace/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tristan/Workspace/NatureCode/jbox2d-library-2.2.1-ds.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tristan/Processing/toxiclibs/verletphysics/library/verletphysics.jar" sourcepath="C:/Users/Tristan/Processing/toxiclibs/verletphysics/library/verletphysics.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tristan/Processing/toxiclibs/toxiclibscore/library/toxiclibscore.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-linux-amd64.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-linux-armv6hf.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-linux-i586.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-macosx-universal.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-windows-amd64.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/gluegen-rt-natives-windows-i586.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-linux-amd64.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-linux-armv6hf.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-linux-i586.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-macosx-universal.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-windows-amd64.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/processing-2.2.1/core/library/jogl-all-natives-windows-i586.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cdlm/Documents/GitHub/NatureCode/jbox2d-library-2.2.1-ds.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

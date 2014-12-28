@@ -1,7 +1,5 @@
 package tree;
 
-import java.util.UUID;
-
 import processing.core.PVector;
 
 public class PVectorWidth extends PVector {

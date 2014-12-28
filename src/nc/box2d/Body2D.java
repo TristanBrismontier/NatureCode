@@ -1,6 +1,5 @@
 package nc.box2d;
 
-import javafx.scene.shape.Box;
 import nc.box2d.shiffman.box2d.Box2DProcessing;
 
 import org.jbox2d.collision.shapes.PolygonShape;
@@ -18,13 +17,11 @@ public class Body2D {
 	protected Body body;
 	protected Box2DProcessing box2d;
 	protected final PApplet p;
+	protected FixtureDef fd;
 	
 	protected float gray;
 	protected float whith;
 	protected float height;
-	
-	PImage img;
-	
 	
 	public Body2D(PApplet p, Box2DProcessing box2d, PVector location) {
 		this(p,box2d,location,p.random(50),p.random(50),BodyType.DYNAMIC);
@@ -36,24 +33,22 @@ public class Body2D {
 		this.gray = 175;
 		this.whith = whith;
 		this.height = height;
-		img = p.loadImage( "finn.png");
 		BodyDef bd = new BodyDef();
 		bd.type = type;
 		
 		bd.position.set(box2d.coordPixelsToWorld(location.x,location.y));
 		body = box2d.createBody(bd);
-		
 		PolygonShape ps = new PolygonShape();
 		float box2dW = box2d.scalarPixelsToWorld(whith/2);
 		float box2dH = box2d.scalarPixelsToWorld(height/2);
 		
 		ps.setAsBox(box2dW, box2dH);
 		
-		FixtureDef fd = new FixtureDef();
+		fd = new FixtureDef();
 		fd.shape = ps;
 		fd.density = 1;
-		fd.friction = 0.3f;
-		fd.restitution = 0.5f;
+		fd.friction = 1f;
+		fd.restitution = 0f;
 		
 		body.createFixture(fd);
 	}
@@ -105,7 +100,6 @@ public class Body2D {
 		p.stroke(255);
 		p.rectMode(p.CENTER);
 		p.rect(0, 0, whith, height);
-		p.image(img, 0, -(img.height+10));
 		p.popMatrix();
 		
 	}

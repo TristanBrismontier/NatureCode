@@ -1,16 +1,10 @@
 package tree;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.UUID;
 
 import processing.core.PApplet;
 import processing.core.PVector;
 
-import com.google.common.collect.Iterables;
 
 public class Crack extends PApplet {
 

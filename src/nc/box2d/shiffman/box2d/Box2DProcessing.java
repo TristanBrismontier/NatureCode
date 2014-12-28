@@ -105,6 +105,7 @@ public class Box2DProcessing {
 	
 	public void createWorld(Vec2 gravity, boolean warmStarting, boolean continous) {
 		world = new World(gravity);
+		world.
 		setWarmStarting(warmStarting);
 		setContinuousPhysics(continous);
 		

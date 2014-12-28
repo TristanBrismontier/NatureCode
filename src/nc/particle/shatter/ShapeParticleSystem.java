@@ -43,8 +43,8 @@ public class ShapeParticleSystem extends ParticleSystem {
 			velocityShatter.sub(particle.location);
 			velocityShatter.normalize();
 			velocityShatter.mult(-1);
-			velocityShatter.x = velocityShatter.x *p.random(1.5f);
-			velocityShatter.y = velocityShatter.y *p.random(1.5f);
+			velocityShatter.x = velocityShatter.x *p.random(2.5f);
+			velocityShatter.y = velocityShatter.y *p.random(2.5f);
 			SquareParticle part = (SquareParticle) particle;
 			part.setShatter(velocityShatter);
 		}

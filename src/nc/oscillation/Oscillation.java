@@ -24,10 +24,10 @@ public class Oscillation extends PApplet {
 	public void setup(){
 		size((int)size, (int)size);
 		background(255);
-		s = 10;
+		s = 20;
 		r = 0;
 		smooth();
-		eloigne = 0.00277f *2 *s;
+		eloigne = 0.00277f *2 *s/2;
 		System.out.println(r+ " " +eloigne );
 		frameRate(10000);
 	}

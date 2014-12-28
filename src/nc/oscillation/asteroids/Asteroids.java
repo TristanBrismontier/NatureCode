@@ -9,7 +9,7 @@ public class Asteroids extends PApplet {
 	boolean rsub;
 
 	public void setup() {
-		size(800, 800);
+		size(1000, 1000);
 		frameRate(100);
 		radd = false;
 		rsub = false;

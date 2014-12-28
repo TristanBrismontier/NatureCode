@@ -7,7 +7,7 @@ public class ParticleApplet extends PApplet {
 
 	ParticleSystem system;
 	final static float G =  0.4f;
-	final int side = 800;
+	final int side = 1500;
 
 	public void setup() {
 		size(side, side);

@@ -9,8 +9,8 @@ import processing.core.PVector;
 public class ShatterShape extends PApplet {
 
 	ShapeParticleSystem system;
-	final int side = 800;
-	final int sizeShape = 20;
+	final int side = 1500;
+	final int sizeShape = 80;
 	
 	public void setup() {
 		size(side, side);

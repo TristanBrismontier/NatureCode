@@ -10,7 +10,7 @@ public class Osc extends PApplet {
 	List<Oscillator> oscs = new ArrayList<Oscillator>();
 	
 	public void setup() {
-		size(500,500);
+		size(1500,1500);
 		for (int i = 0; i <10; i++) {
 			oscs.add(new Oscillator(this));
 		}

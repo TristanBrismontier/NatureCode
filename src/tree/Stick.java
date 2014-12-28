@@ -1,7 +1,6 @@
 package tree;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import processing.core.PApplet;
 import processing.core.PVector;
