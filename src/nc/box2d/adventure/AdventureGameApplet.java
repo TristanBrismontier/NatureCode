@@ -1,13 +1,14 @@
 package nc.box2d.adventure;
 
+import nc.box2d.Border;
+import nc.box2d.Cell;
+import nc.box2d.shiffman.box2d.Box2DProcessing;
+
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.Fixture;
 import org.jbox2d.dynamics.contacts.Contact;
 
-import nc.box2d.Border;
-import nc.box2d.Cell;
-import nc.box2d.shiffman.box2d.Box2DProcessing;
 import processing.core.PApplet;
 import processing.core.PVector;
 
