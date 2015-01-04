@@ -117,7 +117,7 @@ public class Character extends Body2D {
 
 	private Sprite getgretSprite() {
 		if(jumpCount >0){
-			return new Sprite(87,11,182,275);
+			return new Sprite(85,10,182,275);
 		}
 		if(!move){
 			return sprite.get(0);

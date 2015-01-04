@@ -14,7 +14,7 @@ import processing.core.PVector;
 
 public class AdventureGameApplet extends PApplet {
 
-	int size = 1100;
+	int size = 800;
 	Box2DProcessing box2D;
 	Border border;
 	Character charac;
