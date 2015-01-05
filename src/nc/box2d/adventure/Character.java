@@ -27,6 +27,8 @@ public class Character extends Body2D {
 	int index = 0;
 
 	List<Sprite> sprite = new ArrayList<Sprite>();
+	List<Sprite> spriteInvu = new ArrayList<Sprite>();
+
 	PImage finn;
 
 	public Character(PApplet p, Box2DProcessing box2d, PVector location,
@@ -34,11 +36,17 @@ public class Character extends Body2D {
 		super(p, box2d, location, whith, height, BodyType.DYNAMIC);
 		body.setFixedRotation(true);
 		finn = p.loadImage("finnsprit.png");
-		sprite.add(new Sprite(21, 71, 0, 100));
+		sprite.add(new Sprite(15, 71, 0, 100));
 		sprite.add(new Sprite(73, 155, 0, 100));
 		sprite.add(new Sprite(158, 217, 0, 100));
-		sprite.add(new Sprite(223, 298, 0, 100));
+		sprite.add(new Sprite(220, 298, 0, 100));
 		sprite.add(new Sprite(302, 361, 0, 100));
+		
+		spriteInvu.add(new Sprite(1,92,273,382));
+		spriteInvu.add(new Sprite(103,191,273,382));
+		spriteInvu.add(new Sprite(179,283,265,378));
+		spriteInvu.add(new Sprite(280,368,265,378));
+
 	}
 
 	public void monitor(boolean rig, boolean lef, boolean jump, boolean attack) {
@@ -58,6 +66,7 @@ public class Character extends Body2D {
 			this.body.applyLinearImpulse(new Vec2(0, 200), pos, true);
 		}
 		if ((coldDown == limitcoldDown) && attack) {
+			index = 0;
 			coldDown = 0;
 			invuCount = limitinvu;
 		}
@@ -116,6 +125,16 @@ public class Character extends Body2D {
 	}
 
 	private Sprite getgretSprite() {
+		if(invu){
+			if (p.frameCount % 8 == 0 || index>= spriteInvu.size() - 1) {
+				if (index >= spriteInvu.size() - 1) {
+					index = 0;
+				} else {
+					index++;
+				}
+			}
+			return spriteInvu.get(index);
+		}
 		if(jumpCount >0){
 			return new Sprite(85,10,182,275);
 		}
