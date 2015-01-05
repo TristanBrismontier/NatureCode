@@ -21,6 +21,7 @@ public class Character extends Body2D {
 	boolean invu = false;
 	boolean right = true;
 	boolean move = false;
+	boolean player;
 	final static int limitinvu = 22;
 	final static int limitcoldDown = 6;
 	final static int limitJumpCount = 20;
@@ -32,9 +33,10 @@ public class Character extends Body2D {
 	PImage finn;
 
 	public Character(PApplet p, Box2DProcessing box2d, PVector location,
-			float whith, float height) {
+			float whith, float height, boolean player) {
 		super(p, box2d, location, whith, height, BodyType.DYNAMIC);
 		body.setFixedRotation(true);
+		this.player = player;
 		finn = p.loadImage("finnsprit.png");
 		sprite.add(new Sprite(15, 71, 0, 100));
 		sprite.add(new Sprite(73, 155, 0, 100));
@@ -46,6 +48,8 @@ public class Character extends Body2D {
 		spriteInvu.add(new Sprite(103,191,273,382));
 		spriteInvu.add(new Sprite(179,283,265,378));
 		spriteInvu.add(new Sprite(280,368,265,378));
+		
+		body.setUserData(this);
 
 	}
 
@@ -111,7 +115,7 @@ public class Character extends Body2D {
 		}
 		p.stroke(255);
 		p.rectMode(p.CENTER);
-//		p.rect(0, 0, whith, height);
+		p.rect(0, 0, whith, height);
 
 		Sprite sp = getgretSprite();
 		p.imageMode(p.CENTER);
@@ -151,4 +155,13 @@ public class Character extends Body2D {
 		}
 		return sprite.get(index);
 	}
+
+	public boolean isPlayer() {
+		return player;
+	}
+
+	public boolean isInvu() {
+		return invu;
+	}
+	
 }

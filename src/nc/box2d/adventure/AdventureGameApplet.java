@@ -1,7 +1,9 @@
 package nc.box2d.adventure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nc.box2d.Border;
-import nc.box2d.Cell;
 import nc.box2d.shiffman.box2d.Box2DProcessing;
 
 import org.jbox2d.common.Vec2;
@@ -17,29 +19,32 @@ public class AdventureGameApplet extends PApplet {
 	int size = 800;
 	Box2DProcessing box2D;
 	Border border;
-	Character charac;
+	List<Character> characs;
 	boolean rig=false;
 	boolean lef=false;
 	boolean jump=false; 
 	boolean attack = false;
 	
 	public void setup(){
+		characs = new ArrayList<Character>();
 		size((int)(size*1.5f),size);
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld(new Vec2(0.0f, -50.0f));
 		box2D.listenForCollisions();
 		border = new Border(this, box2D);
-		charac = new Character(this, box2D, new PVector (width/2, height/2), 50, 100);
+		characs.add(new Character(this, box2D, new PVector (width/2, height/2), 50, 100, true));
+		characs.add(new Character(this, box2D, new PVector (width/2, height/2), 50, 100, false));
+		
 	}
 	
 	public void draw(){
 		background(0);
-		charac.monitor(rig, lef, jump, attack);
+		characs.get(0).monitor(rig, lef, jump, attack);
 		if(attack)attack=false;
 		box2D.step();
-		charac.update();
+		characs.forEach(c -> c.update());
 		border.display();
-		charac.display();
+		characs.forEach(c -> c.display());
 	}
 	
 	@Override
@@ -83,11 +88,20 @@ public class AdventureGameApplet extends PApplet {
 		if (b1 == null || b2 == null) {
 			return;
 		}
-		Cell cell1 = (Cell) b1.getUserData();
-		Cell cell2 = (Cell) b2.getUserData();
-		if (cell1 != null && cell2 != null) {
-			cell1.contact(cell2);
-			cell2.contact(cell1);
+		Character char1 = (Character) b1.getUserData();
+		Character char2 = (Character) b2.getUserData();
+		if (char1 != null && char2 != null) {
+			if(char1.isInvu() && char1.isPlayer()){
+				
+				char2.destroy();
+				box2D.destroyBody(b2);
+				characs.remove(char2);
+			}
+			if(char2.isInvu() && char2.isPlayer()){
+				char1.destroy();
+				box2D.destroyBody(b1);
+				characs.remove(char1);
+			}
 		}
 	}
 }
