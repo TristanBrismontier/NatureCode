@@ -74,6 +74,10 @@ public class AdventureGameApplet extends PApplet {
 		if (key == 'z' || key == 'Z') {
 			jump = false;
 		}
+		if (key == 'v' || key == 'V') {
+			characs.add(new Character(this, box2D, new PVector (width/2, height/2), 50, 100, false));
+		}
+		
 		if( key == ' '){
 			attack = false;
 		}
@@ -94,12 +98,10 @@ public class AdventureGameApplet extends PApplet {
 			if(char1.isInvu() && char1.isPlayer()){
 				
 				char2.destroy();
-				box2D.destroyBody(b2);
 				characs.remove(char2);
 			}
 			if(char2.isInvu() && char2.isPlayer()){
 				char1.destroy();
-				box2D.destroyBody(b1);
 				characs.remove(char1);
 			}
 		}
