@@ -115,7 +115,7 @@ public class Character extends Body2D {
 		}
 		p.stroke(255);
 		p.rectMode(p.CENTER);
-		p.rect(0, 0, whith, height);
+	//	p.rect(0, 0, whith, height);
 
 		Sprite sp = getgretSprite();
 		p.imageMode(p.CENTER);
