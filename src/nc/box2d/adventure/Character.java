@@ -43,12 +43,12 @@ public class Character extends Body2D {
 		sprite.add(new Sprite(158, 217, 0, 100));
 		sprite.add(new Sprite(220, 298, 0, 100));
 		sprite.add(new Sprite(302, 361, 0, 100));
-		
-		spriteInvu.add(new Sprite(1,92,273,382));
-		spriteInvu.add(new Sprite(103,191,273,382));
-		spriteInvu.add(new Sprite(179,283,265,378));
-		spriteInvu.add(new Sprite(280,368,265,378));
-		
+
+		spriteInvu.add(new Sprite(1, 92, 273, 382));
+		spriteInvu.add(new Sprite(103, 191, 273, 382));
+		spriteInvu.add(new Sprite(179, 283, 265, 378));
+		spriteInvu.add(new Sprite(280, 368, 265, 378));
+
 		body.setUserData(this);
 
 	}
@@ -90,11 +90,11 @@ public class Character extends Body2D {
 			jumpCount = 0;
 		Vec2 newVelo = new Vec2(p.constrain(velo.x, -speedLimit, speedLimit),
 				p.constrain(velo.y, -speedLimit * 10, speedLimit));
-		if(newVelo.x !=0){
-			right = newVelo.x>0;
+		if (newVelo.x != 0) {
+			right = newVelo.x > 0;
 			move = true;
-		}else{
-			move =false;
+		} else {
+			move = false;
 		}
 		this.body.setLinearVelocity(newVelo);
 
@@ -115,22 +115,24 @@ public class Character extends Body2D {
 		}
 		p.stroke(255);
 		p.rectMode(p.CENTER);
-	//	p.rect(0, 0, whith, height);
+		// p.rect(0, 0, whith, height);
 
 		Sprite sp = getgretSprite();
 		p.imageMode(p.CENTER);
 		if (right) {
-			p.image(finn, 0, 0, 50, 100, sp.getA(), sp.getC(), sp.getB(), sp.getD());
+			p.image(finn, 0, 0, 50, 100, sp.getA(), sp.getC(), sp.getB(),
+					sp.getD());
 		} else {
-			p.image(finn, 0, 0, 50, 100, sp.getB(), sp.getC(), sp.getA(), sp.getD());
+			p.image(finn, 0, 0, 50, 100, sp.getB(), sp.getC(), sp.getA(),
+					sp.getD());
 		}
 		p.popMatrix();
 
 	}
 
 	private Sprite getgretSprite() {
-		if(invu){
-			if (p.frameCount % 8 == 0 || index>= spriteInvu.size() - 1) {
+		if (invu) {
+			if (p.frameCount % 8 == 0 || index >= spriteInvu.size() - 1) {
 				if (index >= spriteInvu.size() - 1) {
 					index = 0;
 				} else {
@@ -139,10 +141,10 @@ public class Character extends Body2D {
 			}
 			return spriteInvu.get(index);
 		}
-		if(jumpCount >0){
-			return new Sprite(85,10,182,275);
+		if (jumpCount > 0) {
+			return new Sprite(85, 10, 182, 275);
 		}
-		if(!move){
+		if (!move) {
 			return sprite.get(0);
 		}
 		if (p.frameCount % 8 == 0) {
@@ -163,5 +165,5 @@ public class Character extends Body2D {
 	public boolean isInvu() {
 		return invu;
 	}
-	
+
 }

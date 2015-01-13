@@ -20,33 +20,35 @@ public class AdventureGameApplet extends PApplet {
 	Box2DProcessing box2D;
 	Border border;
 	List<Character> characs;
-	boolean rig=false;
-	boolean lef=false;
-	boolean jump=false; 
+	boolean rig = false;
+	boolean lef = false;
+	boolean jump = false;
 	boolean attack = false;
-	
-	public void setup(){
+
+	public void setup() {
 		characs = new ArrayList<Character>();
-		size((int)(size*1.5f),size);
+		size((int) (size * 1.5f), size);
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld(new Vec2(0.0f, -50.0f));
 		box2D.listenForCollisions();
 		border = new Border(this, box2D);
-		characs.add(new Character(this, box2D, new PVector (width/2, height/2), 50, 100, true));
-		characs.add(new Character(this, box2D, new PVector (width/2, height/2), 50, 100, false));
-		
+		characs.add(new Character(this, box2D, new PVector(width / 2,
+				height / 2), 50, 100, true));
+		characs.add(new Character(this, box2D, new PVector(width / 2,
+				height / 2), 50, 100, false));
 	}
-	
-	public void draw(){
+
+	public void draw() {
 		background(0);
 		characs.get(0).monitor(rig, lef, jump, attack);
-		if(attack)attack=false;
+		if (attack)
+			attack = false;
 		box2D.step();
 		characs.forEach(c -> c.update());
 		border.display();
 		characs.forEach(c -> c.display());
 	}
-	
+
 	@Override
 	public void keyPressed() {
 		if (keyCode == RIGHT) {
@@ -55,10 +57,10 @@ public class AdventureGameApplet extends PApplet {
 		if (keyCode == LEFT) {
 			lef = true;
 		}
-		if (key == 'z' || key == 'Z')  {
+		if (key == 'z') {
 			jump = true;
 		}
-		if( key == ' '){
+		if (key == ' ') {
 			attack = true;
 		}
 	}
@@ -71,18 +73,19 @@ public class AdventureGameApplet extends PApplet {
 		if (keyCode == LEFT) {
 			lef = false;
 		}
-		if (key == 'z' || key == 'Z') {
+		if (key == 'z') {
 			jump = false;
 		}
-		if (key == 'v' || key == 'V') {
-			characs.add(new Character(this, box2D, new PVector (width/2, height/2), 50, 100, false));
+		if (key == 'v') {
+			characs.add(new Character(this, box2D, new PVector(width / 2,
+					height / 2), 50, 100, false));
 		}
-		
-		if( key == ' '){
+
+		if (key == ' ') {
 			attack = false;
 		}
 	}
-	
+
 	public void beginContact(Contact cp) {
 		Fixture f1 = cp.getFixtureA();
 		Fixture f2 = cp.getFixtureB();
@@ -95,12 +98,12 @@ public class AdventureGameApplet extends PApplet {
 		Character char1 = (Character) b1.getUserData();
 		Character char2 = (Character) b2.getUserData();
 		if (char1 != null && char2 != null) {
-			if(char1.isInvu() && char1.isPlayer()){
-				
+			if (char1.isInvu() && char1.isPlayer()) {
+
 				char2.destroy();
 				characs.remove(char2);
 			}
-			if(char2.isInvu() && char2.isPlayer()){
+			if (char2.isInvu() && char2.isPlayer()) {
 				char1.destroy();
 				characs.remove(char1);
 			}
