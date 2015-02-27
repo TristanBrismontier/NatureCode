@@ -66,7 +66,6 @@ public class Character extends Body2D {
 		}
 		if (jump && jumpCount <= limitJumpCount) {
 			this.fd.setFriction(0.2f);
-			System.out.println("jump " + jumpCount++);
 			this.body.applyLinearImpulse(new Vec2(0, 200), pos, true);
 		}
 		if ((coldDown == limitcoldDown) && attack) {
@@ -116,8 +115,13 @@ public class Character extends Body2D {
 		p.stroke(255);
 		p.rectMode(p.CENTER);
 		p.rect(0, 0, whith, height);
-		p.image(finn, -100, -180);
-//
+		if(right){
+			p.image(finn, -100, -180);
+		}else{
+			p.image(finn, -100, -180,200,230,200,0,0,230);
+		}
+
+
 //		Sprite sp = getgretSprite();
 //		p.imageMode(p.CENTER);
 //		if (right) {
