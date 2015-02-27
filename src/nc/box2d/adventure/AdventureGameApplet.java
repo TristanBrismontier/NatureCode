@@ -12,11 +12,12 @@ import org.jbox2d.dynamics.Fixture;
 import org.jbox2d.dynamics.contacts.Contact;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public class AdventureGameApplet extends PApplet {
 
-	int size = 800;
+	int size = 1000;
 	Box2DProcessing box2D;
 	Border border;
 	List<Character> characs;
@@ -24,22 +25,22 @@ public class AdventureGameApplet extends PApplet {
 	boolean lef = false;
 	boolean jump = false;
 	boolean attack = false;
+	PImage field;
 
 	public void setup() {
 		characs = new ArrayList<Character>();
-		size((int) (size * 1.5f), size);
+		size((int) (size * 1.6f), size);
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld(new Vec2(0.0f, -50.0f));
 		box2D.listenForCollisions();
 		border = new Border(this, box2D);
 		characs.add(new Character(this, box2D, new PVector(width / 2,
 				height / 2), 50, 100, true));
-		characs.add(new Character(this, box2D, new PVector(width / 2,
-				height / 2), 50, 100, false));
+		field = loadImage("field.png");
 	}
 
 	public void draw() {
-		background(0);
+		background();
 		characs.get(0).monitor(rig, lef, jump, attack);
 		if (attack)
 			attack = false;
@@ -47,6 +48,11 @@ public class AdventureGameApplet extends PApplet {
 		characs.forEach(c -> c.update());
 		border.display();
 		characs.forEach(c -> c.display());
+	}
+
+	private void background() {
+		image(field, width/2, height/2);
+		
 	}
 
 	@Override

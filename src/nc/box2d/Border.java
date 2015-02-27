@@ -23,8 +23,8 @@ public class Border {
 		
 		surface.add(new Vec2(10,10)); 
 	 	surface.add(new Vec2(p.width-10,10)); 
-	 	surface.add(new Vec2(p.width-10,p.height-10)); 
-	 	surface.add(new Vec2(10,p.height-10)); 
+	 	surface.add(new Vec2(p.width-10,p.height-200)); 
+	 	surface.add(new Vec2(10,p.height-200)); 
 	 	surface.add(new Vec2(10,10));
 
 		
