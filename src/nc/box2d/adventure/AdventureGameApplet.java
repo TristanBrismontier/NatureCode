@@ -1,8 +1,5 @@
 package nc.box2d.adventure;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import nc.box2d.Border;
 import nc.box2d.shiffman.box2d.Box2DProcessing;
 
@@ -20,7 +17,7 @@ public class AdventureGameApplet extends PApplet {
 	int size = 1000;
 	Box2DProcessing box2D;
 	Border border;
-	List<Character> characs;
+	Character charac;
 	boolean rig = false;
 	boolean lef = false;
 	boolean jump = false;
@@ -28,32 +25,25 @@ public class AdventureGameApplet extends PApplet {
 	PImage field;
 
 	public void setup() {
-		characs = new ArrayList<Character>();
 		size((int) (size * 1.6f), size);
 		box2D = new Box2DProcessing(this);
 		box2D.createWorld(new Vec2(0.0f, -50.0f));
 		box2D.listenForCollisions();
 		border = new Border(this, box2D);
-		characs.add(new Character(this, box2D, new PVector(width / 2,
-				height / 2), 50, 100, true));
+		charac = new Character(this, box2D, new PVector(width / 2,
+				height / 2), 50, 100, true);
 		field = loadImage("field.png");
 	}
 
 	public void draw() {
-		background();
-	
-		characs.get(0).monitor(rig, lef, jump, attack);
+		image(field, 0, 0);
+		charac.monitor(rig, lef, jump, attack);
 		if (attack)
 			attack = false;
 		box2D.step();
-		characs.forEach(c -> c.update());
+		charac.update();
 //		border.display();
-		characs.forEach(c -> c.display());
-	}
-
-	private void background() {
-		image(field, 0, 0);
-		
+		charac.display();
 	}
 
 	@Override
@@ -77,7 +67,7 @@ public class AdventureGameApplet extends PApplet {
 	}
 
 	private void speak() {
-		float x = characs.get(0).getX();
+		float x = charac.getX();
 		if(x<250){
 			System.out.println("Sage");
 		}
@@ -101,11 +91,6 @@ public class AdventureGameApplet extends PApplet {
 		if (key == 'z') {
 			jump = false;
 		}
-		if (key == 'v') {
-			characs.add(new Character(this, box2D, new PVector(width / 2,
-					height / 2), 50, 100, false));
-		}
-
 		if (key == ' ') {
 			attack = false;
 		}
@@ -126,11 +111,11 @@ public class AdventureGameApplet extends PApplet {
 			if (char1.isInvu() && char1.isPlayer()) {
 
 				char2.destroy();
-				characs.remove(char2);
+//				charac.remove(char2);
 			}
 			if (char2.isInvu() && char2.isPlayer()) {
 				char1.destroy();
-				characs.remove(char1);
+//				charac.remove(char1);
 			}
 		}
 	}
