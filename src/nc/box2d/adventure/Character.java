@@ -99,6 +99,10 @@ public class Character extends Body2D {
 
 	}
 
+	public float getX(){
+		Vec2 pos = box2d.getBodyPixelCoord(body);
+		return pos.x;
+	}
 	public void display() {
 		Vec2 pos = box2d.getBodyPixelCoord(body);
 		float a = body.getAngle();
