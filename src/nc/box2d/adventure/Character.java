@@ -52,6 +52,10 @@ public class Character extends Body2D {
 		body.setUserData(this);
 
 	}
+	public float getX(){
+		Vec2 pos = box2d.getBodyPixelCoord(body);
+		return pos.x;
+	}
 
 	public void monitor(boolean rig, boolean lef, boolean jump, boolean attack) {
 		Vec2 pos = this.body.getPosition();
@@ -66,6 +70,7 @@ public class Character extends Body2D {
 		}
 		if (jump && jumpCount <= limitJumpCount) {
 			this.fd.setFriction(0.2f);
+			jumpCount++;
 			this.body.applyLinearImpulse(new Vec2(0, 200), pos, true);
 		}
 		if ((coldDown == limitcoldDown) && attack) {
@@ -99,10 +104,6 @@ public class Character extends Body2D {
 
 	}
 
-	public float getX(){
-		Vec2 pos = box2d.getBodyPixelCoord(body);
-		return pos.x;
-	}
 	public void display() {
 		Vec2 pos = box2d.getBodyPixelCoord(body);
 		float a = body.getAngle();
@@ -118,7 +119,7 @@ public class Character extends Body2D {
 		}
 		p.stroke(255);
 		p.rectMode(p.CENTER);
-		p.rect(0, 0, whith, height);
+//		p.rect(0, 0, whith, height);
 		if(right){
 			p.image(finn, -100, -180);
 		}else{

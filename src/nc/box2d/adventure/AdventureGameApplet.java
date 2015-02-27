@@ -41,12 +41,13 @@ public class AdventureGameApplet extends PApplet {
 
 	public void draw() {
 		background();
+	
 		characs.get(0).monitor(rig, lef, jump, attack);
 		if (attack)
 			attack = false;
 		box2D.step();
 		characs.forEach(c -> c.update());
-		border.display();
+//		border.display();
 		characs.forEach(c -> c.display());
 	}
 
@@ -69,6 +70,24 @@ public class AdventureGameApplet extends PApplet {
 		if (key == ' ') {
 			attack = true;
 		}
+		if (key == 'e') {
+			speak();
+		}
+		
+	}
+
+	private void speak() {
+		float x = characs.get(0).getX();
+		if(x<250){
+			System.out.println("Sage");
+		}
+		if(x>900 && x<1200){
+			System.out.println("Bernard");
+		}
+		if(x> 1450){
+			System.out.println("La Porte");
+		}
+		
 	}
 
 	@Override
