@@ -51,7 +51,7 @@ public class AdventureGameApplet extends PApplet {
 	}
 
 	private void background() {
-		image(field, width/2, height/2);
+		image(field, 0, 0);
 		
 	}
 

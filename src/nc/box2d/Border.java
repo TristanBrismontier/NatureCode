@@ -21,11 +21,11 @@ public class Border {
 		this.p = p; 
 		this.box2d = box2d;
 		
-		surface.add(new Vec2(10,10)); 
-	 	surface.add(new Vec2(p.width-10,10)); 
-	 	surface.add(new Vec2(p.width-10,p.height-200)); 
-	 	surface.add(new Vec2(10,p.height-200)); 
-	 	surface.add(new Vec2(10,10));
+		surface.add(new Vec2(60,10)); 
+	 	surface.add(new Vec2(p.width-80,10)); 
+	 	surface.add(new Vec2(p.width-80,p.height-200)); 
+	 	surface.add(new Vec2(60,p.height-200)); 
+	 	surface.add(new Vec2(60,10));
 
 		
 		ChainShape chain = new ChainShape();

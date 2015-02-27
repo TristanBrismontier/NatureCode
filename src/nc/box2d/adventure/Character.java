@@ -37,7 +37,7 @@ public class Character extends Body2D {
 		super(p, box2d, location, whith, height, BodyType.DYNAMIC);
 		body.setFixedRotation(true);
 		this.player = player;
-		finn = p.loadImage("finnsprit.png");
+		finn = p.loadImage("Serge.png");
 		sprite.add(new Sprite(15, 71, 0, 100));
 		sprite.add(new Sprite(73, 155, 0, 100));
 		sprite.add(new Sprite(158, 217, 0, 100));
@@ -115,17 +115,18 @@ public class Character extends Body2D {
 		}
 		p.stroke(255);
 		p.rectMode(p.CENTER);
-		// p.rect(0, 0, whith, height);
-
-		Sprite sp = getgretSprite();
-		p.imageMode(p.CENTER);
-		if (right) {
-			p.image(finn, 0, 0, 50, 100, sp.getA(), sp.getC(), sp.getB(),
-					sp.getD());
-		} else {
-			p.image(finn, 0, 0, 50, 100, sp.getB(), sp.getC(), sp.getA(),
-					sp.getD());
-		}
+		p.rect(0, 0, whith, height);
+		p.image(finn, -100, -180);
+//
+//		Sprite sp = getgretSprite();
+//		p.imageMode(p.CENTER);
+//		if (right) {
+//			p.image(finn, 0, 0, 50, 100, sp.getA(), sp.getC(), sp.getB(),
+//					sp.getD());
+//		} else {
+//			p.image(finn, 0, 0, 50, 100, sp.getB(), sp.getC(), sp.getA(),
+//					sp.getD());
+//		}
 		p.popMatrix();
 
 	}
